@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>英検 3級・準2級 Q&A練習ツール</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>英検 準2級・3級 Q&A 練習</title>
   <style>
     body { font-family: sans-serif; padding: 20px; }
     button { margin: 5px; padding: 10px 15px; font-size: 16px; }
@@ -13,16 +13,16 @@
   </style>
 </head>
 <body>
-  <h1>英検 3級・準2級 Q&A 練習ツール</h1>
+  <h1>英検 準2級・3級 Q&A 練習</h1>
 
   <label for="gradeSelect">級を選択：</label>
-  <select id="gradeSelect">
-    <option value="3">3級</option>
-    <option value="pre2">準2級</option>
+  <select id="gradeSelect" onchange="resetAll()">
+    <option value="grade3">3級</option>
+    <option value="gradePre2">準2級</option>
   </select>
 
   <div>
-    <button onclick="showQuestion()">お題を表示（Yes / No）</button>
+    <button onclick="showQuestion()">お題を表示（質問①: Yes / No）</button>
     <div class="card" id="questionCard" style="display:none;">
       <h2 id="questionText"></h2>
       <p><button onclick="toggleTranslation('question')">和訳を表示</button></p>
@@ -39,13 +39,13 @@
   </div>
 
   <div>
-    <button onclick="showWhQuestion()">お題を表示（Wh-質問）</button>
+    <button onclick="showWhQuestion()">お題を表示（質問②: 前置きあり Yes / No）</button>
     <div class="card" id="whCard" style="display:none;">
       <h2 id="whQuestionText"></h2>
       <p><button onclick="toggleTranslation('wh')">和訳を表示</button></p>
       <p class="translation" id="whQuestionTranslation"></p>
-      <button onclick="showWhAnswer('short')">短い答え</button>
-      <button onclick="showWhAnswer('long')">長い答え</button>
+      <button onclick="showWhAnswer('yes')">Yesの答えを表示</button>
+      <button onclick="showWhAnswer('no')">Noの答えを表示</button>
       <div class="answer" id="shortAnswer"></div>
       <p><button onclick="toggleTranslation('short')">和訳を表示</button></p>
       <p class="translation" id="shortTranslation"></p>
@@ -55,182 +55,144 @@
     </div>
   </div>
 
-<script>
-  // === 3級 Yes/No 質問 20問
-  const grade3_questions = [
-    {question:"Do you like reading books?",translation:"本を読むのが好きですか？",answers:{yes:"Yes, I do. I like stories and learn many things from books.",no:"No, I don't. I think reading is boring and I like playing outside."},translations:{yes:"はい、好きです。物語が好きで、本から多くのことを学べます。",no:"いいえ、好きではありません。読書は退屈で、外で遊ぶほうが好きです。"}},
-    {question:"Do you eat vegetables every day?",translation:"毎日野菜を食べますか？",answers:{yes:"Yes, I do. They are healthy and my mother makes vegetable dishes.",no:"No, I don't. I don't like the taste of vegetables."},translations:{yes:"はい、食べます。野菜は体に良くて、母が野菜料理を作ってくれます。",no:"いいえ、食べません。野菜の味が好きではありません。"}},
-    {question:"Do you play sports?",translation:"スポーツをしますか？",answers:{yes:"Yes, I do. I play soccer with my friends.",no:"No, I don't. I'm not good at sports."},translations:{yes:"はい、します。友だちとサッカーをします。",no:"いいえ、しません。スポーツが得意ではありません。"}},
-    {question:"Do you like animals?",translation:"動物が好きですか？",answers:{yes:"Yes, I do. I have a pet cat.",no:"No, I don't. I’m afraid of animals."},translations:{yes:"はい、好きです。ペットの猫がいます。",no:"いいえ、好きではありません。動物がこわいです。"}},
-    {question:"Do you watch TV every day?",translation:"毎日テレビを見ますか？",answers:{yes:"Yes, I do. I like watching cartoons.",no:"No, I don't. I prefer reading books."},translations:{yes:"はい、毎日見ます。アニメを見るのが好きです。",no:"いいえ、見ません。本を読むほうが好きです。"}},
-    {question:"Do you like going to school?",translation:"学校に行くのは好きですか？",answers:{yes:"Yes, I do. I like my teachers and friends.",no:"No, I don't. I feel tired at school."},translations:{yes:"はい、好きです。先生や友だちが好きです。",no:"いいえ、好きではありません。学校で疲れます。"}},
-    {question:"Do you help your parents at home?",translation:"家で両親を手伝いますか？",answers:{yes:"Yes, I do. I clean my room and set the table.",no:"No, I don't. I prefer to relax."},translations:{yes:"はい、手伝います。部屋を掃除して、食卓を準備します。",no:"いいえ、手伝いません。リラックスしたいです。"}},
-    {question:"Do you have many friends?",translation:"友だちはたくさんいますか？",answers:{yes:"Yes, I do. I like spending time with them.",no:"No, I don't. I like being alone sometimes."},translations:{yes:"はい、たくさんいます。友だちと過ごすのが好きです。",no:"いいえ、あまりいません。時々一人の時間が好きです。"}},
-    {question:"Do you like playing video games?",translation:"テレビゲームをするのは好きですか？",answers:{yes:"Yes, I do. I play every weekend.",no:"No, I don't. I prefer playing outside."},translations:{yes:"はい、好きです。毎週末プレイします。",no:"いいえ、好きではありません。外で遊ぶほうが好きです。"}},
-    {question:"Do you study English every day?",translation:"毎日英語を勉強しますか？",answers:{yes:"Yes, I do. I want to speak English well.",no:"No, I don't. I find it difficult."},translations:{yes:"はい、毎日勉強します。英語を上手に話したいです。",no:"いいえ、勉強しません。難しいです。"}},
-    {question:"Do you like music?",translation:"音楽が好きですか？",answers:{yes:"Yes, I do. I listen to pop music.",no:"No, I don't. I prefer silence."},translations:{yes:"はい、好きです。ポップミュージックを聞きます。",no:"いいえ、好きではありません。静かなほうがいいです。"}},
-    {question:"Do you like summer?",translation:"夏が好きですか？",answers:{yes:"Yes, I do. I like swimming.",no:"No, I don't. I don't like hot weather."},translations:{yes:"はい、好きです。泳ぐのが好きです。",no:"いいえ、好きではありません。暑いのは苦手です。"}},
-    {question:"Do you like to draw pictures?",translation:"絵を描くのは好きですか？",answers:{yes:"Yes, I do. I draw every weekend.",no:"No, I don't. I'm not good at drawing."},translations:{yes:"はい、好きです。毎週末絵を描きます。",no:"いいえ、好きではありません。絵は苦手です。"}},
-    {question:"Do you like to eat fruit?",translation:"果物を食べるのは好きですか？",answers:{yes:"Yes, I do. I like apples and bananas.",no:"No, I don't. I prefer vegetables."},translations:{yes:"はい、好きです。りんごとバナナが好きです。",no:"いいえ、好きではありません。野菜のほうが好きです。"}},
-    {question:"Do you clean your room?",translation:"自分の部屋を掃除しますか？",answers:{yes:"Yes, I do. I clean it every Saturday.",no:"No, I don't. I don't like cleaning."},translations:{yes:"はい、掃除します。毎週土曜日に掃除します。",no:"いいえ、掃除しません。掃除は好きではありません。"}},
-    {question:"Do you have a pet?",translation:"ペットはいますか？",answers:{yes:"Yes, I do. I have a dog.",no:"No, I don't. I want one."},translations:{yes:"はい、います。犬を飼っています。",no:"いいえ、いません。欲しいです。"}},
-    {question:"Do you like to watch movies?",translation:"映画を見るのは好きですか？",answers:{yes:"Yes, I do. I like action movies.",no:"No, I don't. I prefer reading books."},translations:{yes:"はい、好きです。アクション映画が好きです。",no:"いいえ、好きではありません。本を読むほうが好きです。"}},
-    {question:"Do you like to ride a bike?",translation:"自転車に乗るのは好きですか？",answers:{yes:"Yes, I do. I ride my bike every day.",no:"No, I don't. I prefer walking."},translations:{yes:"はい、好きです。毎日自転車に乗ります。",no:"いいえ、好きではありません。歩くほうが好きです。"}},
-    {question:"Do you like to sing?",translation:"歌うのは好きですか？",answers:{yes:"Yes, I do. I sing at school events.",no:"No, I don't. I’m shy."},translations:{yes:"はい、好きです。学校のイベントで歌います。",no:"いいえ、好きではありません。恥ずかしいです。"}},
-    {question:"Do you like to cook?",translation:"料理をするのは好きですか？",answers:{yes:"Yes, I do. I cook with my mother.",no:"No, I don't. I prefer to eat."},translations:{yes:"はい、好きです。母と一緒に料理をします。",no:"いいえ、好きではありません。食べるほうが好きです。"}}
-  ];
+  <script src="grade3.js"></script>
+  <script src="grade3_wh.js"></script>
+  <script src="gradePre2.js"></script>
+  <script src="gradePre2_wh.js"></script>
+  <script>
+    let currentQA = null;
+    let currentWhQA = null;
 
-  // === 3級 Wh質問 20問
-  const grade3_wh_questions = [
-    {question:"What do you usually do after school?",translation:"放課後はたいてい何をしますか？",answers:{short:"I do my homework.",long:"I do my homework and then play video games."},translations:{short:"宿題をします。",long:"宿題をしてからテレビゲームをします。"}},
-    {question:"What is your favorite season?",translation:"好きな季節は何ですか？",answers:{short:"I like spring.",long:"I like spring because I can see cherry blossoms and the weather is nice."},translations:{short:"春が好きです。",long:"春が好きです。桜が見られて天気もいいからです。"}},
-    {question:"What do you do in the morning?",translation:"朝に何をしますか？",answers:{short:"I eat breakfast.",long:"I eat breakfast and brush my teeth."},translations:{short:"朝ごはんを食べます。",long:"朝ごはんを食べて歯をみがきます。"}},
-    {question:"Where do you live?",translation:"どこに住んでいますか？",answers:{short:"I live in Tokyo.",long:"I live in Tokyo with my family."},translations:{short:"東京に住んでいます。",long:"家族と一緒に東京に住んでいます。"}},
-    {question:"Who is your best friend?",translation:"一番の友だちは誰ですか？",answers:{short:"My best friend is Tom.",long:"My best friend is Tom. We like playing soccer together."},translations:{short:"一番の友だちはトムです。",long:"一番の友だちはトムです。いっしょにサッカーをするのが好きです。"}},
-    {question:"When do you usually get up?",translation:"たいてい何時に起きますか？",answers:{short:"I usually get up at 7 a.m.",long:"I usually get up at 7 a.m. and eat breakfast."},translations:{short:"たいてい朝7時に起きます。",long:"たいてい朝7時に起きて、朝ごはんを食べます。"}},
-    {question:"Why do you like your school?",translation:"なぜ学校が好きですか？",answers:{short:"I like my school because my friends are there.",long:"I like my school because my friends are there and teachers are kind."},translations:{short:"友だちがいるから学校が好きです。",long:"友だちがいて先生も優しいから学校が好きです。"}},
-    {question:"What do you want to be in the future?",translation:"将来何になりたいですか？",answers:{short:"I want to be a teacher.",long:"I want to be a teacher because I like helping people."},translations:{short:"先生になりたいです。",long:"人を助けるのが好きなので、先生になりたいです。"}},
-    {question:"What do you eat for lunch?",translation:"昼ごはんに何を食べますか？",answers:{short:"I eat rice and vegetables.",long:"I eat rice and vegetables because they are healthy."},translations:{short:"ご飯と野菜を食べます。",long:"健康にいいので、ご飯と野菜を食べます。"}},
-    {question:"Where do you like to go on holidays?",translation:"休日はどこに行くのが好きですか？",answers:{short:"I like to go to the park.",long:"I like to go to the park and play with my friends."},translations:{short:"公園に行くのが好きです。",long:"公園に行って友だちと遊ぶのが好きです。"}},
-    {question:"Who helps you with your homework?",translation:"宿題を手伝ってくれるのは誰ですか？",answers:{short:"My mother helps me.",long:"My mother helps me because she is good at English."},translations:{short:"母が手伝ってくれます。",long:"母は英語が得意なので手伝ってくれます。"}},
-    {question:"When do you study English?",translation:"いつ英語を勉強しますか？",answers:{short:"I study English after school.",long:"I study English after school and sometimes on weekends."},translations:{short:"放課後に勉強します。",long:"放課後や時々週末に勉強します。"}},
-    {question:"Why do you like sports?",translation:"なぜスポーツが好きですか？",answers:{short:"I like sports because it is fun.",long:"I like sports because it is fun and healthy."},translations:{short:"楽しいからスポーツが好きです。",long:"楽しくて健康にいいからスポーツが好きです。"}},
-    {question:"What do you do on weekends?",translation:"週末に何をしますか？",answers:{short:"I play soccer.",long:"I play soccer and sometimes go to the movies."},translations:{short:"サッカーをします。",long:"サッカーをして時々映画を見に行きます。"}},
-    {question:"Where do you want to travel?",translation:"どこに旅行したいですか？",answers:{short:"I want to travel to Kyoto.",long:"I want to travel to Kyoto to see temples."},translations:{short:"京都に旅行したいです。",long:"お寺を見るために京都に旅行したいです。"}},
-    {question:"Who is your favorite teacher?",translation:"好きな先生は誰ですか？",answers:{short:"My favorite teacher is Ms. Yamada.",long:"My favorite teacher is Ms. Yamada because she is kind."},translations:{short:"好きな先生は山田先生です。",long:"優しいので山田先生が好きです。"}},
-    {question:"When is your birthday?",translation:"誕生日はいつですか？",answers:{short:"My birthday is in May.",long:"My birthday is in May and I have a party."},translations:{short:"誕生日は5月です。",long:"誕生日は5月でパーティーをします。"}},
-    {question:"Why do you like music?",translation:"なぜ音楽が好きですか？",answers:{short:"I like music because it is relaxing.",long:"I like music because it is relaxing and makes me happy."},translations:{short:"リラックスできるから音楽が好きです。",long:"リラックスできて楽しくなるから音楽が好きです。"}},
-    {question:"What do you do after school?",translation:"放課後は何をしますか？",answers:{short:"I study English.",long:"I study English and then watch TV."},translations:{short:"英語を勉強します。",long:"英語を勉強してからテレビを見ます。"}},
-    {question:"Where do you want to live?",translation:"どこに住みたいですか？",answers:{short:"I want to live in a big city.",long:"I want to live in a big city because there are many things to do."},translations:{short:"大きな町に住みたいです。",long:"やることがたくさんあるので大きな町に住みたいです。"}}
-  ];
+    function getSelectedGrade() {
+      return document.getElementById("gradeSelect").value;
+    }
 
-  // === 準2級 Yes/No 質問 20問
-  const gradePre2_questions = [
-    {question:"Do you think watching TV is a good way to learn English?",translation:"テレビを見ることは英語を学ぶよい方法だと思いますか？",answers:{yes:"Yes, I do. We can learn natural English and pronunciation from TV.",no:"No, I don't. Just watching TV is not enough to really learn English."},translations:{yes:"はい、思います。テレビから自然な英語や発音を学べます。",no:"いいえ、思いません。ただテレビを見るだけでは英語は本当に身につきません。"}},
-    {question:"Do you think people should exercise every day?",translation:"毎日運動をするべきだと思いますか？",answers:{yes:"Yes, I do. Exercise keeps us healthy.",no:"No, I don't. Some people need rest more than exercise."},translations:{yes:"はい、思います。運動は健康を保ちます。",no:"いいえ、思いません。人によっては運動より休息が大切です。"}},
-    {question:"Do you like studying history?",translation:"歴史を勉強するのは好きですか？",answers:{yes:"Yes, I do. History teaches us about the past.",no:"No, I don't. History is hard to understand."},translations:{yes:"はい、好きです。歴史は過去について教えてくれます。",no:"いいえ、好きではありません。歴史は難しいです。"}},
-    {question:"Do you think it is important to save money?",translation:"お金を貯めることは大切だと思いますか？",answers:{yes:"Yes, I do. Saving money helps in emergencies.",no:"No, I don't. It's better to enjoy life now."},translations:{yes:"はい、思います。貯金は緊急時に役立ちます。",no:"いいえ、思いません。今を楽しむほうがいいです。"}},
-    {question:"Do you like traveling?",translation:"旅行は好きですか？",answers:{yes:"Yes, I do. Traveling is fun and educational.",no:"No, I don't. Traveling is tiring and expensive."},translations:{yes:"はい、好きです。旅行は楽しくて勉強になります。",no:"いいえ、好きではありません。旅行は疲れてお金もかかります。"}},
-    {question:"Do you think people should recycle?",translation:"リサイクルをするべきだと思いますか？",answers:{yes:"Yes, I do. Recycling helps the environment.",no:"No, I don't. It is too much work."},translations:{yes:"はい、思います。リサイクルは環境に良いです。",no:"いいえ、思いません。面倒だからです。"}},
-    {question:"Do you like reading newspapers?",translation:"新聞を読むのは好きですか？",answers:{yes:"Yes, I do. Newspapers have useful information.",no:"No, I don't. I prefer online news."},translations:{yes:"はい、好きです。新聞は役に立つ情報があります。",no:"いいえ、好きではありません。オンラインニュースのほうが好きです。"}},
-    {question:"Do you think it is important to learn computer skills?",translation:"パソコンの技術を学ぶことは大切だと思いますか？",answers:{yes:"Yes, I do. Computers are useful in many jobs.",no:"No, I don't. Not everyone needs to use computers."},translations:{yes:"はい、思います。パソコンは多くの仕事で役立ちます。",no:"いいえ、思いません。誰もが使う必要はありません。"}},
-    {question:"Do you like playing team sports?",translation:"チームスポーツをするのは好きですか？",answers:{yes:"Yes, I do. It helps me make friends.",no:"No, I don't. I prefer individual sports."},translations:{yes:"はい、好きです。友だちができるからです。",no:"いいえ、好きではありません。個人競技のほうが好きです。"}},
-    {question:"Do you think it is good to learn foreign languages?",translation:"外国語を学ぶことは良いことだと思いますか？",answers:{yes:"Yes, I do. It helps to communicate with many people.",no:"No, I don't. It is too difficult."},translations:{yes:"はい、思います。多くの人と話せるようになります。",no:"いいえ、思いません。難しすぎます。"}},
-    {question:"Do you like cooking?",translation:"料理をするのは好きですか？",answers:{yes:"Yes, I do. Cooking is fun and useful.",no:"No, I don't. I prefer to eat out."},translations:{yes:"はい、好きです。料理は楽しくて役に立ちます。",no:"いいえ、好きではありません。外食が好きです。"}},
-    {question:"Do you think it is important to be polite?",translation:"礼儀正しいことは大切だと思いますか？",answers:{yes:"Yes, I do. Being polite helps people get along.",no:"No, I don't. Sometimes it is better to be honest."},translations:{yes:"はい、思います。礼儀正しいと人と仲良くなれます。",no:"いいえ、思いません。正直なほうがいい時もあります。"}},
-    {question:"Do you like listening to music?",translation:"音楽を聴くのは好きですか？",answers:{yes:"Yes, I do. Music helps me relax.",no:"No, I don't. I prefer quiet places."},translations:{yes:"はい、好きです。音楽はリラックスできます。",no:"いいえ、好きではありません。静かな場所が好きです。"}},
-    {question:"Do you think exercise is good for health?",translation:"運動は健康に良いと思いますか？",answers:{yes:"Yes, I do. Exercise keeps the body strong.",no:"No, I don't. Some people get tired easily."},translations:{yes:"はい、思います。運動は体を強くします。",no:"いいえ、思いません。疲れやすい人もいます。"}},
-    {question:"Do you like to travel abroad?",translation:"海外旅行は好きですか？",answers:{yes:"Yes, I do. It is exciting to see new places.",no:"No, I don't. I prefer staying at home."},translations:{yes:"はい、好きです。新しい場所を見るのは楽しいです。",no:"いいえ、好きではありません。家にいるほうが好きです。"}},
-    {question:"Do you think studying hard is important?",translation:"一生懸命勉強することは大切だと思いますか？",answers:{yes:"Yes, I do. Studying helps me reach my goals.",no:"No, I don't. There are other ways to succeed."},translations:{yes:"はい、思います。勉強は目標を達成するのに役立ちます。",no:"いいえ、思いません。他の成功方法もあります。"}},
-    {question:"Do you like playing musical instruments?",translation:"楽器を演奏するのは好きですか？",answers:{yes:"Yes, I do. I play the piano.",no:"No, I don't. I don't know how to play."},translations:{yes:"はい、好きです。ピアノを弾きます。",no:"いいえ、好きではありません。弾き方がわかりません。"}},
-    {question:"Do you think it is good to help others?",translation:"他の人を助けることは良いことだと思いますか？",answers:{yes:"Yes, I do. Helping makes the world better.",no:"No, I don't. Everyone should take care of themselves."},translations:{yes:"はい、思います。助け合いで世界は良くなります。",no:"いいえ、思いません。みんな自分のことを考えるべきです。"}},
-    {question:"Do you like to read books?",translation:"本を読むのは好きですか？",answers:{yes:"Yes, I do. Books teach me many things.",no:"No, I don't. I find reading boring."},translations:{yes:"はい、好きです。本からたくさん学べます。",no:"いいえ、好きではありません。読むのは退屈です。"}},
-    {question:"Do you think it is important to sleep well?",translation:"よく寝ることは大切だと思いますか？",answers:{yes:"Yes, I do. Good sleep helps my health.",no:"No, I don't. I can study even if I sleep little."},translations:{yes:"はい、思います。良い睡眠は健康に役立ちます。",no:"いいえ、思いません。寝なくても勉強できます。"}}
-  ];
-
-  // --- 準2級 Wh質問はなし（空配列）
-  const gradePre2_wh_questions = [];
-
-  // -------------------------------------
-
-  let currentQA = null;
-  let currentWhQA = null;
-
-  function getSelectedGrade() {
-    return document.getElementById("gradeSelect").value;
-  }
-
-  function showQuestion() {
-    const grade = getSelectedGrade();
-    const questions = grade === "3" ? grade3_questions : gradePre2_questions;
-    const i = Math.floor(Math.random() * questions.length);
-    currentQA = questions[i];
-
-    document.getElementById("questionText").textContent = currentQA.question;
-    document.getElementById("questionTranslation").textContent = currentQA.translation;
-
-    document.getElementById("yesAnswer").style.display = "none";
-    document.getElementById("noAnswer").style.display = "none";
-    document.getElementById("yesTranslation").style.display = "none";
-    document.getElementById("noTranslation").style.display = "none";
-    document.getElementById("questionTranslation").style.display = "none";
-
-    document.getElementById("questionCard").style.display = "block";
-
-    // 準2級はWh質問は非表示にする
-    if(grade === "pre2") {
+    function resetAll() {
+      // 問題と答えの表示リセット
+      document.getElementById("questionCard").style.display = "none";
       document.getElementById("whCard").style.display = "none";
+
+      ["yesAnswer", "noAnswer", "shortAnswer", "longAnswer",
+       "questionTranslation", "yesTranslation", "noTranslation",
+       "whQuestionTranslation", "shortTranslation", "longTranslation"
+      ].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = "none";
+        if (el) el.textContent = "";
+      });
+
+      // 問題文もクリア
+      document.getElementById("questionText").textContent = "";
+      document.getElementById("whQuestionText").textContent = "";
     }
-  }
 
-  function showAnswer(type) {
-    if (!currentQA) return;
-    const answer = currentQA.answers[type];
-    const translation = currentQA.translations[type];
-    const el = document.getElementById(type + "Answer");
-    const tr = document.getElementById(type + "Translation");
-    el.textContent = answer;
-    el.style.display = "block";
-    tr.textContent = translation;
-    tr.style.display = "none";
-  }
+    function showQuestion() {
+      const grade = getSelectedGrade();
+      const questions = grade === "grade3" ? grade3_questions : gradePre2_questions;
+      const i = Math.floor(Math.random() * questions.length);
+      currentQA = questions[i];
 
-  function showWhQuestion() {
-    const grade = getSelectedGrade();
-    if(grade === "pre2") {
-      alert("準2級はWh質問タイプはありません。Yes/Noのお題を使ってください。");
-      return;
+      document.getElementById("questionText").textContent = currentQA.question;
+      document.getElementById("questionTranslation").textContent = currentQA.translation || "";
+
+      ["yesAnswer", "noAnswer", "yesTranslation", "noTranslation", "questionTranslation"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = "none";
+        if (id !== "questionTranslation") el.textContent = "";
+      });
+
+      document.getElementById("questionCard").style.display = "block";
     }
-    const i = Math.floor(Math.random() * grade3_wh_questions.length);
-    currentWhQA = grade3_wh_questions[i];
 
-    document.getElementById("whQuestionText").textContent = currentWhQA.question;
-    document.getElementById("whQuestionTranslation").textContent = currentWhQA.translation;
+    function showAnswer(type) {
+      if (!currentQA) return;
 
-    document.getElementById("shortAnswer").style.display = "none";
-    document.getElementById("longAnswer").style.display = "none";
-    document.getElementById("shortTranslation").style.display = "none";
-    document.getElementById("longTranslation").style.display = "none";
-    document.getElementById("whQuestionTranslation").style.display = "none";
-
-    document.getElementById("whCard").style.display = "block";
-  }
-
-  function showWhAnswer(type) {
-    if (!currentWhQA) return;
-    const answer = currentWhQA.answers[type];
-    const translation = currentWhQA.translations[type];
-    const el = document.getElementById(type + "Answer");
-    const tr = document.getElementById(type + "Translation");
-    el.textContent = answer;
-    el.style.display = "block";
-    tr.textContent = translation;
-    tr.style.display = "none";
-  }
-
-  function toggleTranslation(type) {
-    const trId = {
-      question: "questionTranslation",
-      yes: "yesTranslation",
-      no: "noTranslation",
-      wh: "whQuestionTranslation",
-      short: "shortTranslation",
-      long: "longTranslation"
-    }[type];
-    const el = document.getElementById(trId);
-    if(el.style.display === "block") {
-      el.style.display = "none";
-    } else {
+      const answer = currentQA.answers[type];
+      const translation = currentQA.answerTranslations[type];
+      const el = document.getElementById(type + "Answer");
+      const tr = document.getElementById(type + "Translation");
+      el.textContent = answer;
       el.style.display = "block";
+      tr.textContent = translation || "";
+      tr.style.display = "none";
     }
-  }
 
-  document.getElementById("gradeSelect").addEventListener("change", () => {
-    currentQA = null;
-    currentWhQA = null;
-    document.getElementById("questionCard").style.display = "none";
-    document.getElementById("whCard").style.display = "none";
-  });
-</script>
+    function showWhQuestion() {
+      const grade = getSelectedGrade();
+      const questions = grade === "grade3" ? grade3_wh_questions : gradePre2_wh_questions;
+      const i = Math.floor(Math.random() * questions.length);
+      currentWhQA = questions[i];
+
+      document.getElementById("whQuestionText").textContent = currentWhQA.question;
+      document.getElementById("whQuestionTranslation").textContent = currentWhQA.translation || "";
+
+      ["shortAnswer", "longAnswer", "shortTranslation", "longTranslation", "whQuestionTranslation"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = "none";
+        if (!id.includes("Translation")) el.textContent = "";
+      });
+
+      document.getElementById("whCard").style.display = "block";
+    }
+
+    function showWhAnswer(type) {
+      if (!currentWhQA) return;
+
+      // 準2級はyes/noの答えなので、shortAnswerとlongAnswerにそれぞれ表示
+      const grade = getSelectedGrade();
+      if (grade === "gradePre2") {
+        const answer = currentWhQA.answers[type];
+        const translation = currentWhQA.answerTranslations[type];
+        if(type === "yes") {
+          document.getElementById("shortAnswer").textContent = answer;
+          document.getElementById("longAnswer").textContent = "";
+          document.getElementById("shortTranslation").textContent = translation || "";
+          document.getElementById("longTranslation").textContent = "";
+          document.getElementById("shortAnswer").style.display = "block";
+          document.getElementById("longAnswer").style.display = "none";
+          document.getElementById("shortTranslation").style.display = "none";
+          document.getElementById("longTranslation").style.display = "none";
+        } else if(type === "no") {
+          document.getElementById("longAnswer").textContent = answer;
+          document.getElementById("shortAnswer").textContent = "";
+          document.getElementById("longTranslation").textContent = translation || "";
+          document.getElementById("shortTranslation").textContent = "";
+          document.getElementById("longAnswer").style.display = "block";
+          document.getElementById("shortAnswer").style.display = "none";
+          document.getElementById("longTranslation").style.display = "none";
+          document.getElementById("shortTranslation").style.display = "none";
+        }
+        return;
+      }
+
+      // 3級は short / long で答えが分かれている
+      const answer = currentWhQA.answers[type];
+      const translation = currentWhQA.translations[type];
+      const el = document.getElementById(type + "Answer");
+      const tr = document.getElementById(type + "Translation");
+      el.textContent = answer;
+      el.style.display = "block";
+      tr.textContent = translation || "";
+      tr.style.display = "none";
+    }
+
+    function toggleTranslation(type) {
+      const trId = {
+        question: "questionTranslation",
+        yes: "yesTranslation",
+        no: "noTranslation",
+        wh: "whQuestionTranslation",
+        short: "shortTranslation",
+        long: "longTranslation"
+      }[type];
+      const el = document.getElementById(trId);
+      if (!el) return;
+      if (el.style.display === "none") {
+        el.style.display = "block";
+      } else {
+        el.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>

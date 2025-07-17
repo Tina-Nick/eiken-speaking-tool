@@ -1,242 +1,242 @@
 ﻿const grade3_questions = [
   {
+    question: "Do you like sports?",
+    translation: "スポーツは好きですか？",
+    answers: {
+      yes: "Yes. I like sports because they keep me healthy and happy.",
+      no: "No. I don’t like sports because I’m not good at them."
+    },
+    answerTranslations: {
+      yes: "はい。スポーツは健康で幸せにしてくれるから好きです。",
+      no: "いいえ。スポーツは苦手なので好きではありません。"
+    }
+  },
+  {
     question: "Do you like reading books?",
-    translation: "本を読むのが好きですか？",
+    translation: "本を読むのは好きですか？",
     answers: {
-      yes: "Yes, I do. I like stories and learn many things from books.",
-      no: "No, I don't. I think reading is boring and I like playing outside."
+      yes: "Yes. Reading books helps me learn new things and relax.",
+      no: "No. I prefer watching movies or playing games."
     },
-    translations: {
-      yes: "はい、好きです。物語が好きで、本から多くのことを学べます。",
-      no: "いいえ、好きではありません。読書は退屈で、外で遊ぶほうが好きです。"
+    answerTranslations: {
+      yes: "はい。本を読むと新しいことが学べてリラックスできます。",
+      no: "いいえ。映画を見たりゲームをしたりする方が好きです。"
     }
   },
   {
-    question: "Do you eat vegetables every day?",
-    translation: "毎日野菜を食べますか？",
+    question: "Do you like watching movies?",
+    translation: "映画を見るのは好きですか？",
     answers: {
-      yes: "Yes, I do. They are healthy and my mother makes vegetable dishes.",
-      no: "No, I don't. I don't like the taste of vegetables."
+      yes: "Yes. I enjoy watching movies in my free time.",
+      no: "No. I prefer reading books or playing outside."
     },
-    translations: {
-      yes: "はい、食べます。野菜は体に良くて、母が野菜料理を作ってくれます。",
-      no: "いいえ、食べません。野菜の味が好きではありません。"
-    }
-  },
-  {
-    question: "Do you play sports?",
-    translation: "スポーツをしますか？",
-    answers: {
-      yes: "Yes, I do. I play soccer with my friends.",
-      no: "No, I don't. I'm not good at sports."
-    },
-    translations: {
-      yes: "はい、します。友だちとサッカーをします。",
-      no: "いいえ、しません。スポーツが得意ではありません。"
+    answerTranslations: {
+      yes: "はい。自由な時間に映画を見るのが好きです。",
+      no: "いいえ。本を読んだり外で遊んだりする方が好きです。"
     }
   },
   {
     question: "Do you like animals?",
-    translation: "動物が好きですか？",
+    translation: "動物は好きですか？",
     answers: {
-      yes: "Yes, I do. I have a pet cat.",
-      no: "No, I don't. I’m afraid of animals."
+      yes: "Yes. Animals are cute and fun to be with.",
+      no: "No. I am not interested in animals."
     },
-    translations: {
-      yes: "はい、好きです。ペットの猫がいます。",
-      no: "いいえ、好きではありません。動物がこわいです。"
+    answerTranslations: {
+      yes: "はい。動物はかわいくて一緒にいると楽しいです。",
+      no: "いいえ。動物にはあまり興味がありません。"
     }
   },
   {
-    question: "Do you often watch TV?",
-    translation: "よくテレビを見ますか？",
+    question: "Do you like to eat vegetables?",
+    translation: "野菜は食べるのが好きですか？",
     answers: {
-      yes: "Yes, I do. I like watching cartoons and news.",
-      no: "No, I don't. I prefer reading books."
+      yes: "Yes. Vegetables are healthy and tasty.",
+      no: "No. I prefer to eat meat and sweets."
     },
-    translations: {
-      yes: "はい、よく見ます。アニメやニュースが好きです。",
-      no: "いいえ、見ません。本を読む方が好きです。"
+    answerTranslations: {
+      yes: "はい。野菜は健康に良くておいしいです。",
+      no: "いいえ。肉やお菓子の方が好きです。"
     }
   },
   {
-    question: "Do you go to school by bus?",
-    translation: "バスで学校に行きますか？",
+    question: "Do you like to play video games?",
+    translation: "テレビゲームをするのは好きですか？",
     answers: {
-      yes: "Yes, I do. The bus is fast and easy.",
-      no: "No, I don't. I walk to school every day."
+      yes: "Yes. Playing games is fun and exciting.",
+      no: "No. I prefer playing sports or reading."
     },
-    translations: {
-      yes: "はい、行きます。バスは速くて便利です。",
-      no: "いいえ、行きません。毎日歩いて学校に行きます。"
+    answerTranslations: {
+      yes: "はい。ゲームをするのは楽しくてわくわくします。",
+      no: "いいえ。スポーツや読書の方が好きです。"
     }
   },
   {
-    question: "Do you like to eat fruits?",
-    translation: "果物を食べるのが好きですか？",
+    question: "Do you like listening to music?",
+    translation: "音楽を聴くのは好きですか？",
     answers: {
-      yes: "Yes, I do. Fruits are sweet and healthy.",
-      no: "No, I don't. I prefer sweets like candy."
+      yes: "Yes. Music makes me happy and relaxed.",
+      no: "No. I don’t listen to music often."
     },
-    translations: {
-      yes: "はい、好きです。果物は甘くて健康にいいです。",
-      no: "いいえ、好きではありません。キャンディのような甘いものの方が好きです。"
-    }
-  },
-  {
-    question: "Do you have many friends?",
-    translation: "友だちはたくさんいますか？",
-    answers: {
-      yes: "Yes, I do. I like talking and playing with them.",
-      no: "No, I don't. I am shy and like to be alone."
-    },
-    translations: {
-      yes: "はい、たくさんいます。話したり遊んだりするのが好きです。",
-      no: "いいえ、いません。恥ずかしがり屋で一人が好きです。"
-    }
-  },
-  {
-    question: "Do you help your parents at home?",
-    translation: "家で親の手伝いをしますか？",
-    answers: {
-      yes: "Yes, I do. I sometimes wash dishes and clean my room.",
-      no: "No, I don't. I usually play games after school."
-    },
-    translations: {
-      yes: "はい、します。時々お皿を洗ったり、自分の部屋を掃除したりします。",
-      no: "いいえ、しません。放課後はたいていゲームをしています。"
+    answerTranslations: {
+      yes: "はい。音楽を聴くと幸せでリラックスできます。",
+      no: "いいえ。あまり音楽を聴きません。"
     }
   },
   {
     question: "Do you like to travel?",
-    translation: "旅行するのが好きですか？",
+    translation: "旅行するのは好きですか？",
     answers: {
-      yes: "Yes, I do. I want to visit many countries.",
-      no: "No, I don't. I like staying at home."
+      yes: "Yes. Traveling helps me learn new things.",
+      no: "No. I prefer to stay at home."
     },
-    translations: {
-      yes: "はい、好きです。たくさんの国を訪れたいです。",
-      no: "いいえ、好きではありません。家にいる方が好きです。"
+    answerTranslations: {
+      yes: "はい。旅行すると新しいことが学べます。",
+      no: "いいえ。家にいる方が好きです。"
     }
   },
   {
-    question: "Do you like to watch movies?",
-    translation: "映画を見るのが好きですか？",
+    question: "Do you like swimming?",
+    translation: "泳ぐのは好きですか？",
     answers: {
-      yes: "Yes, I do. I enjoy watching comedies and animations.",
-      no: "No, I don't. I prefer reading books."
+      yes: "Yes. Swimming is fun and good exercise.",
+      no: "No. I am afraid of water."
     },
-    translations: {
-      yes: "はい、好きです。コメディやアニメを見るのが好きです。",
-      no: "いいえ、好きではありません。本を読む方が好きです。"
+    answerTranslations: {
+      yes: "はい。泳ぐのは楽しくて良い運動です。",
+      no: "いいえ。水が怖いです。"
     }
   },
   {
-    question: "Do you like playing video games?",
-    translation: "テレビゲームをするのが好きですか？",
+    question: "Do you like going to school?",
+    translation: "学校に行くのは好きですか？",
     answers: {
-      yes: "Yes, I do. I play every day after school.",
-      no: "No, I don't. I like playing outside more."
+      yes: "Yes. I like seeing my friends and learning new things.",
+      no: "No. I don’t like school because it’s hard sometimes."
     },
-    translations: {
-      yes: "はい、好きです。放課後は毎日ゲームをします。",
-      no: "いいえ、好きではありません。外で遊ぶ方が好きです。"
+    answerTranslations: {
+      yes: "はい。友だちに会ったり新しいことを学んだりするのが好きです。",
+      no: "いいえ。学校は時々難しいので好きではありません。"
     }
   },
   {
-    question: "Do you like to listen to music?",
-    translation: "音楽を聴くのが好きですか？",
+    question: "Do you like helping your family?",
+    translation: "家族の手伝いをするのは好きですか？",
     answers: {
-      yes: "Yes, I do. I listen to music every day.",
-      no: "No, I don't. I prefer silence."
+      yes: "Yes. I like helping my family because it is important.",
+      no: "No. I don’t like doing chores."
     },
-    translations: {
-      yes: "はい、好きです。毎日音楽を聴きます。",
-      no: "いいえ、好きではありません。静かな方が好きです。"
+    answerTranslations: {
+      yes: "はい。家族の手伝いは大切なので好きです。",
+      no: "いいえ。家事をするのは好きではありません。"
     }
   },
   {
-    question: "Do you have a pet?",
-    translation: "ペットを飼っていますか？",
+    question: "Do you like eating sweets?",
+    translation: "甘いものを食べるのは好きですか？",
     answers: {
-      yes: "Yes, I have a dog. I walk him every day.",
-      no: "No, I don't. I want to have a pet someday."
+      yes: "Yes. Sweets are delicious and fun to eat.",
+      no: "No. I prefer healthy food."
     },
-    translations: {
-      yes: "はい、犬を飼っています。毎日散歩に行きます。",
-      no: "いいえ、飼っていません。いつかペットを飼いたいです。"
+    answerTranslations: {
+      yes: "はい。甘いものはおいしくて楽しいです。",
+      no: "いいえ。健康的な食べ物が好きです。"
     }
   },
   {
-    question: "Do you like to go to the park?",
-    translation: "公園に行くのが好きですか？",
+    question: "Do you like watching TV?",
+    translation: "テレビを見るのは好きですか？",
     answers: {
-      yes: "Yes, I do. I play soccer with my friends there.",
-      no: "No, I don't. I prefer to stay home."
+      yes: "Yes. Watching TV is relaxing.",
+      no: "No. I prefer to read books."
     },
-    translations: {
-      yes: "はい、好きです。友だちとサッカーをします。",
-      no: "いいえ、好きではありません。家にいる方が好きです。"
+    answerTranslations: {
+      yes: "はい。テレビを見るとリラックスできます。",
+      no: "いいえ。本を読む方が好きです。"
     }
   },
   {
-    question: "Do you often use the internet?",
-    translation: "よくインターネットを使いますか？",
+    question: "Do you like riding a bike?",
+    translation: "自転車に乗るのは好きですか？",
     answers: {
-      yes: "Yes, I do. I use it to watch videos and study.",
-      no: "No, I don't. I use it only at school."
+      yes: "Yes. Riding a bike is fun and good exercise.",
+      no: "No. I don’t like riding a bike."
     },
-    translations: {
-      yes: "はい、よく使います。動画を見たり勉強したりします。",
-      no: "いいえ、使いません。学校だけで使います。"
+    answerTranslations: {
+      yes: "はい。自転車に乗るのは楽しくて良い運動です。",
+      no: "いいえ。自転車に乗るのは好きではありません。"
     }
   },
   {
-    question: "Do you like school lunch?",
-    translation: "学校の給食は好きですか？",
+    question: "Do you like drawing pictures?",
+    translation: "絵を描くのは好きですか？",
     answers: {
-      yes: "Yes, I do. The food is tasty and healthy.",
-      no: "No, I don't. I prefer food from home."
+      yes: "Yes. Drawing helps me relax and be creative.",
+      no: "No. I am not good at drawing."
     },
-    translations: {
-      yes: "はい、好きです。給食はおいしくて健康的です。",
-      no: "いいえ、好きではありません。家のご飯の方が好きです。"
+    answerTranslations: {
+      yes: "はい。絵を描くとリラックスできて創造的になれます。",
+      no: "いいえ。絵を描くのは得意ではありません。"
     }
   },
   {
-    question: "Do you like to ride a bicycle?",
-    translation: "自転車に乗るのが好きですか？",
+    question: "Do you like to clean your room?",
+    translation: "自分の部屋を掃除するのは好きですか？",
     answers: {
-      yes: "Yes, I do. I ride my bicycle in the park.",
-      no: "No, I don't. I prefer walking."
+      yes: "Yes. Cleaning makes my room nice and comfortable.",
+      no: "No. I don’t like cleaning."
     },
-    translations: {
-      yes: "はい、好きです。公園で自転車に乗ります。",
-      no: "いいえ、好きではありません。歩く方が好きです。"
+    answerTranslations: {
+      yes: "はい。掃除すると部屋がきれいで快適になります。",
+      no: "いいえ。掃除は好きではありません。"
     }
   },
   {
-    question: "Do you like summer?",
-    translation: "夏が好きですか？",
+    question: "Do you like to listen to stories?",
+    translation: "お話を聞くのは好きですか？",
     answers: {
-      yes: "Yes, I do. I like swimming and eating ice cream.",
-      no: "No, I don't. It is too hot for me."
+      yes: "Yes. I like listening to stories because they are interesting.",
+      no: "No. I prefer to read stories myself."
     },
-    translations: {
-      yes: "はい、好きです。泳いだりアイスを食べたりします。",
-      no: "いいえ、好きではありません。暑すぎます。"
+    answerTranslations: {
+      yes: "はい。お話は面白いので聞くのが好きです。",
+      no: "いいえ。自分で読む方が好きです。"
     }
   },
   {
-    question: "Do you like winter?",
-    translation: "冬が好きですか？",
+    question: "Do you like going to the park?",
+    translation: "公園に行くのは好きですか？",
     answers: {
-      yes: "Yes, I do. I enjoy playing in the snow.",
-      no: "No, I don't. I feel cold and stay inside."
+      yes: "Yes. Going to the park is fun and relaxing.",
+      no: "No. I prefer staying at home."
     },
-    translations: {
-      yes: "はい、好きです。雪で遊ぶのが楽しいです。",
-      no: "いいえ、好きではありません。寒いので家にいます。"
+    answerTranslations: {
+      yes: "はい。公園に行くのは楽しくてリラックスできます。",
+      no: "いいえ。家にいる方が好きです。"
+    }
+  },
+  {
+    question: "Do you like playing with your friends?",
+    translation: "友だちと遊ぶのは好きですか？",
+    answers: {
+      yes: "Yes. Playing with friends is fun and makes me happy.",
+      no: "No. I prefer to play alone."
+    },
+    answerTranslations: {
+      yes: "はい。友だちと遊ぶのは楽しくて幸せです。",
+      no: "いいえ。一人で遊ぶ方が好きです。"
+    }
+  },
+  {
+    question: "Do you like eating breakfast?",
+    translation: "朝ごはんを食べるのは好きですか？",
+    answers: {
+      yes: "Yes. Eating breakfast gives me energy for the day.",
+      no: "No. I don’t feel hungry in the morning."
+    },
+    answerTranslations: {
+      yes: "はい。朝ごはんを食べると一日元気に過ごせます。",
+      no: "いいえ。朝はあまりお腹が空きません。"
     }
   }
 ];

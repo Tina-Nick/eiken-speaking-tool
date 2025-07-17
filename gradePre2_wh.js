@@ -1,254 +1,194 @@
 ﻿const gradePre2_wh_questions = [
   {
-    question: "What do you usually do on the weekend?",
-    translation: "週末はたいてい何をしますか？",
+    question: "Some people say that children today don't often help their parents. Do you usually help your parents at home?",
+    translation: "最近の子どもはあまり親を手伝わないと言う人がいます。あなたは家で親を手伝いますか？",
     answers: {
-      short: "I usually go shopping.",
-      long: "I usually go shopping with my mother and then cook lunch at home."
+      yes: "Yes. I usually help them by washing dishes or cleaning my room. Also, I sometimes go shopping with my mother.",
+      no: "No. I don't help them very often because I have a lot of homework. Also, I feel tired after school."
     },
-    translations: {
-      short: "たいてい買い物に行きます。",
-      long: "たいてい母と買い物に行き、それから家で昼ごはんを作ります。"
+    answerTranslations: {
+      yes: "はい、皿洗いや自分の部屋の掃除をして手伝っています。また、ときどき母と一緒に買い物にも行きます。",
+      no: "いいえ、あまり手伝いません。宿題が多いし、学校のあとで疲れているからです。"
     }
   },
   {
-    question: "What sport do you like?",
-    translation: "どんなスポーツが好きですか？",
+    question: "Some people say that young people don’t read many books these days. Do you often read books in your free time?",
+    translation: "最近の若者はあまり本を読まないと言う人がいます。あなたは自由な時間に本をよく読みますか？",
     answers: {
-      short: "I like baseball.",
-      long: "I like baseball because I enjoy playing it with my friends and watching games on TV."
+      yes: "Yes. I often read comic books and novels at home. Reading helps me relax and learn new words.",
+      no: "No. I don't read books very often because I like watching videos online. Also, I think reading takes a lot of time."
     },
-    translations: {
-      short: "野球が好きです。",
-      long: "野球が好きです。友だちとプレーしたり、テレビで試合を見るのが楽しいからです。"
+    answerTranslations: {
+      yes: "はい、家でよく漫画や小説を読みます。本を読むとリラックスできるし、新しい言葉も学べます。",
+      no: "いいえ、あまり本を読みません。動画を見るほうが好きだし、読書は時間がかかると思います。"
     }
   },
   {
-    question: "Where do you usually go on vacation?",
-    translation: "普段休みの日はどこに行きますか？",
+    question: "These days, many children use smartphones. Do you think it is a good idea for young children to use smartphones?",
+    translation: "最近、多くの子どもがスマートフォンを使っています。小さな子どもがスマートフォンを使うのは良いと思いますか？",
     answers: {
-      short: "I usually go to the beach.",
-      long: "I usually go to the beach with my family during vacations."
+      yes: "Yes. I think it is good because they can watch educational videos. Also, they can contact their parents when needed.",
+      no: "No. I don't think so because smartphones can be bad for their eyes. Also, they might play games too much."
     },
-    translations: {
-      short: "たいてい海に行きます。",
-      long: "休みの日は家族といっしょに海に行きます。"
+    answerTranslations: {
+      yes: "はい。教育的な動画を見ることができるからです。また、必要なときに親と連絡をとることもできます。",
+      no: "いいえ。スマートフォンは目に悪いからです。また、ゲームをやりすぎるかもしれません。"
     }
   },
   {
-    question: "Who is your favorite teacher?",
-    translation: "好きな先生は誰ですか？",
+    question: "Some people say that children spend too much time watching TV. Do you think watching TV is bad for children?",
+    translation: "子どもはテレビを見すぎだと言う人がいます。テレビを見るのは子どもに悪いと思いますか？",
     answers: {
-      short: "My favorite teacher is Ms. Sato.",
-      long: "My favorite teacher is Ms. Sato because she is kind and helpful."
+      yes: "Yes. Watching too much TV can harm children’s health. They should play outside more.",
+      no: "No. TV can be educational and fun if watched in moderation."
     },
-    translations: {
-      short: "好きな先生は佐藤先生です。",
-      long: "佐藤先生は優しくて助けてくれるから好きです。"
+    answerTranslations: {
+      yes: "はい。テレビを見すぎると子どもの健康に悪いです。もっと外で遊ぶべきです。",
+      no: "いいえ。適度に見れば教育的で楽しいです。"
     }
   },
   {
-    question: "When do you usually have dinner?",
-    translation: "たいてい何時に夕食を食べますか？",
+    question: "These days, many people use the internet for information. Do you think the internet is useful?",
+    translation: "最近、多くの人が情報を得るためにインターネットを使っています。インターネットは役に立つと思いますか？",
     answers: {
-      short: "I usually have dinner at 6 p.m.",
-      long: "I usually have dinner at 6 p.m. with my family."
+      yes: "Yes. The internet helps us find information quickly and easily.",
+      no: "No. Sometimes the information on the internet is wrong or harmful."
     },
-    translations: {
-      short: "たいてい午後6時に夕食を食べます。",
-      long: "家族といっしょに午後6時に夕食を食べます。"
+    answerTranslations: {
+      yes: "はい。インターネットは情報を早く簡単に見つけられます。",
+      no: "いいえ。インターネットの情報は間違っていたり害があることもあります。"
     }
   },
   {
-    question: "Why do you like studying English?",
-    translation: "なぜ英語の勉強が好きですか？",
+    question: "Some people say that children today do not like reading books. Do you like reading books?",
+    translation: "最近の子どもは本を読むのが好きではないと言う人がいます。あなたは本を読むのが好きですか？",
     answers: {
-      short: "I like it because it is interesting.",
-      long: "I like studying English because it is interesting and useful for communication."
+      yes: "Yes. I like reading books because they teach me new things.",
+      no: "No. I prefer watching videos or playing games."
     },
-    translations: {
-      short: "面白いから好きです。",
-      long: "英語は面白くて、コミュニケーションに役立つから好きです。"
+    answerTranslations: {
+      yes: "はい。本を読むと新しいことが学べるので好きです。",
+      no: "いいえ。動画を見たりゲームをしたりするほうが好きです。"
     }
   },
   {
-    question: "What do you do to stay healthy?",
-    translation: "健康のために何をしますか？",
+    question: "Some people say that children today don’t help with housework. Do you help with housework at home?",
+    translation: "最近の子どもは家事をあまり手伝わないと言う人がいます。あなたは家で家事を手伝いますか？",
     answers: {
-      short: "I exercise and eat healthy food.",
-      long: "I exercise regularly and eat healthy food like vegetables and fruits."
+      yes: "Yes. I help by cleaning and washing dishes. It is important to help my family.",
+      no: "No. I am too busy with schoolwork to help at home."
     },
-    translations: {
-      short: "運動して健康的な食べ物を食べます。",
-      long: "定期的に運動して、野菜や果物など健康的な食べ物を食べます。"
+    answerTranslations: {
+      yes: "はい。掃除や皿洗いをして手伝います。家族の助けは大切です。",
+      no: "いいえ。学校の勉強で忙しくて手伝えません。"
     }
   },
   {
-    question: "Where do you want to live in the future?",
-    translation: "将来どこに住みたいですか？",
+    question: "Some people say that children spend too much time playing video games. Do you think video games are bad?",
+    translation: "子どもはテレビゲームをやりすぎだと言う人がいます。テレビゲームは悪いと思いますか？",
     answers: {
-      short: "I want to live in a big city.",
-      long: "I want to live in a big city because there are many job opportunities and fun places."
+      yes: "Yes. Playing too much video games can hurt children’s eyes and health.",
+      no: "No. Video games can be fun and help us think carefully."
     },
-    translations: {
-      short: "大きな町に住みたいです。",
-      long: "仕事の機会や楽しい場所が多いので大きな町に住みたいです。"
+    answerTranslations: {
+      yes: "はい。テレビゲームをやりすぎると目や健康に悪いです。",
+      no: "いいえ。テレビゲームは楽しくて考える力もつきます。"
     }
   },
   {
-    question: "Who do you admire?",
-    translation: "誰を尊敬していますか？",
+    question: "Some people say that students should study English more. Do you think it is important to study English?",
+    translation: "もっと英語を勉強すべきだと言う人がいます。英語を勉強することは大切だと思いますか？",
     answers: {
-      short: "I admire my father.",
-      long: "I admire my father because he works hard and is kind to others."
+      yes: "Yes. English is used around the world and helps us communicate.",
+      no: "No. I think we can use translators and don’t have to study English hard."
     },
-    translations: {
-      short: "父を尊敬しています。",
-      long: "父は一生懸命働き、人に優しいので尊敬しています。"
+    answerTranslations: {
+      yes: "はい。英語は世界中で使われていて、コミュニケーションに役立ちます。",
+      no: "いいえ。翻訳機を使えば英語を頑張って勉強しなくてもいいと思います。"
     }
   },
   {
-    question: "When did you start learning English?",
-    translation: "いつから英語を学び始めましたか？",
+    question: "Some people say that children today don’t exercise enough. Do you often do sports or exercise?",
+    translation: "最近の子どもは運動不足だと言う人がいます。あなたはよくスポーツや運動をしますか？",
     answers: {
-      short: "I started in elementary school.",
-      long: "I started learning English in elementary school when I was six years old."
+      yes: "Yes. I play soccer and ride my bike every week.",
+      no: "No. I prefer to stay inside and play video games."
     },
-    translations: {
-      short: "小学校で始めました。",
-      long: "6歳の時に小学校で英語を学び始めました。"
+    answerTranslations: {
+      yes: "はい。毎週サッカーをしたり自転車に乗ったりします。",
+      no: "いいえ。家の中でテレビゲームをする方が好きです。"
     }
   },
   {
-    question: "Why do you want to learn more about science?",
-    translation: "なぜもっと科学について学びたいですか？",
+    question: "Some people say that children should go to bed earlier. Do you usually go to bed early?",
+    translation: "子どもはもっと早く寝るべきだと言う人がいます。あなたはたいてい早く寝ますか？",
     answers: {
-      short: "Because science is fun and useful.",
-      long: "Because science is fun and helps us understand the world better."
+      yes: "Yes. I go to bed at 9 p.m. to get enough sleep.",
+      no: "No. I usually stay up late doing homework or watching videos."
     },
-    translations: {
-      short: "科学は楽しくて役に立つからです。",
-      long: "科学は楽しくて、世界をよりよく理解するのに役立つからです。"
+    answerTranslations: {
+      yes: "はい。十分寝るために午後9時に寝ます。",
+      no: "いいえ。宿題や動画を見ていて遅くまで起きています。"
     }
   },
   {
-    question: "What do you usually eat for breakfast?",
-    translation: "朝ごはんにたいてい何を食べますか？",
+    question: "Some people say that children should eat healthy food. Do you usually eat healthy food?",
+    translation: "子どもは健康的な食べ物を食べるべきだと言う人がいます。あなたは普段健康的な食べ物を食べますか？",
     answers: {
-      short: "I usually eat toast and eggs.",
-      long: "I usually eat toast, eggs, and drink milk for breakfast."
+      yes: "Yes. I usually eat vegetables, fruits, and rice.",
+      no: "No. I like sweets and fast food more."
     },
-    translations: {
-      short: "たいていトーストと卵を食べます。",
-      long: "トーストと卵を食べて、ミルクを飲みます。"
+    answerTranslations: {
+      yes: "はい。普段は野菜や果物、ご飯を食べます。",
+      no: "いいえ。甘いものやファストフードの方が好きです。"
     }
   },
   {
-    question: "Where do you like to study?",
-    translation: "どこで勉強するのが好きですか？",
+    question: "Some people say that children should spend less time using smartphones. Do you agree?",
+    translation: "子どもはスマホの使用時間を減らすべきだと言う人がいます。あなたはそう思いますか？",
     answers: {
-      short: "I like to study in my room.",
-      long: "I like to study in my room because it is quiet and comfortable."
+      yes: "Yes. Using smartphones too much can be bad for eyes and sleep.",
+      no: "No. Smartphones help me study and talk with friends."
     },
-    translations: {
-      short: "自分の部屋で勉強するのが好きです。",
-      long: "静かで快適なので、自分の部屋で勉強するのが好きです。"
+    answerTranslations: {
+      yes: "はい。スマホを使いすぎると目や睡眠に悪いです。",
+      no: "いいえ。スマホは勉強や友達と話すのに役立ちます。"
     }
   },
   {
-    question: "Who do you usually talk to at school?",
-    translation: "学校でたいてい誰と話しますか？",
+    question: "Some people say that schools should have more art classes. Do you think art classes are important?",
+    translation: "学校はもっと美術の授業を増やすべきだと言う人がいます。美術の授業は大切だと思いますか？",
     answers: {
-      short: "I usually talk to my classmates.",
-      long: "I usually talk to my classmates during break time."
+      yes: "Yes. Art classes help students be creative and express themselves.",
+      no: "No. Some students don’t like art and prefer other subjects."
     },
-    translations: {
-      short: "たいていクラスメートと話します。",
-      long: "休み時間にクラスメートと話します。"
+    answerTranslations: {
+      yes: "はい。美術の授業は創造力を伸ばし、自分を表現する助けになります。",
+      no: "いいえ。美術が好きでない生徒もいて、他の教科がいいと思います。"
     }
   },
   {
-    question: "When do you usually exercise?",
-    translation: "たいていいつ運動しますか？",
+    question: "Some people say that children should help in the kitchen. Do you help your family cook or prepare meals?",
+    translation: "子どもは台所を手伝うべきだと言う人がいます。あなたは家族の料理や準備を手伝いますか？",
     answers: {
-      short: "I usually exercise after school.",
-      long: "I usually exercise after school for about an hour."
+      yes: "Yes. I help by washing vegetables and setting the table.",
+      no: "No. I don’t help much because I am busy with schoolwork."
     },
-    translations: {
-      short: "たいてい放課後に運動します。",
-      long: "放課後に約1時間運動します。"
+    answerTranslations: {
+      yes: "はい。野菜を洗ったり、テーブルを準備したりして手伝います。",
+      no: "いいえ。学校の勉強で忙しくてあまり手伝いません。"
     }
   },
   {
-    question: "Why do you like your hometown?",
-    translation: "なぜ故郷が好きですか？",
+    question: "Some people say that children should learn about different cultures. Do you think it is important?",
+    translation: "子どもは違う文化について学ぶべきだと言う人がいます。それは大切だと思いますか？",
     answers: {
-      short: "Because it is peaceful and beautiful.",
-      long: "Because my hometown is peaceful, beautiful, and I have many friends there."
+      yes: "Yes. Learning about cultures helps us understand and respect others.",
+      no: "No. I think it is more important to study science and math."
     },
-    translations: {
-      short: "静かで美しいからです。",
-      long: "故郷は静かで美しく、友だちもたくさんいるからです。"
-    }
-  },
-  {
-    question: "What do you do when you feel tired?",
-    translation: "疲れたときに何をしますか？",
-    answers: {
-      short: "I rest and listen to music.",
-      long: "I rest and listen to music to relax when I feel tired."
-    },
-    translations: {
-      short: "休んで音楽を聴きます。",
-      long: "疲れたときは休んで音楽を聴いてリラックスします。"
-    }
-  },
-  {
-    question: "Where do you want to work in the future?",
-    translation: "将来どこで働きたいですか？",
-    answers: {
-      short: "I want to work in a hospital.",
-      long: "I want to work in a hospital because I want to help sick people."
-    },
-    translations: {
-      short: "病院で働きたいです。",
-      long: "病気の人を助けたいので病院で働きたいです。"
-    }
-  },
-  {
-    question: "Who is your favorite actor or actress?",
-    translation: "好きな俳優か女優は誰ですか？",
-    answers: {
-      short: "My favorite actress is Emma Watson.",
-      long: "My favorite actress is Emma Watson because she is talented and kind."
-    },
-    translations: {
-      short: "好きな女優はエマ・ワトソンです。",
-      long: "彼女は才能があって優しいので好きです。"
-    }
-  },
-  {
-    question: "When do you usually do your homework?",
-    translation: "たいていいつ宿題をしますか？",
-    answers: {
-      short: "I usually do it in the evening.",
-      long: "I usually do my homework in the evening after dinner."
-    },
-    translations: {
-      short: "たいてい夕方にします。",
-      long: "夕食後の夕方に宿題をします。"
-    }
-  },
-  {
-    question: "Why do you want to learn English?",
-    translation: "なぜ英語を学びたいですか？",
-    answers: {
-      short: "Because it is useful for communication.",
-      long: "Because English is useful for talking to people from other countries and for traveling."
-    },
-    translations: {
-      short: "コミュニケーションに役立つからです。",
-      long: "英語は外国の人と話したり旅行したりするのに役立つからです。"
+    answerTranslations: {
+      yes: "はい。文化を学ぶことで他の人を理解し、尊重できます。",
+      no: "いいえ。科学や数学の勉強の方が大切だと思います。"
     }
   }
 ];

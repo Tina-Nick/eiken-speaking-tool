@@ -1,254 +1,206 @@
 ﻿const gradePre2_questions = [
   {
-    question: "Do you think watching TV is a good way to learn English?",
-    translation: "テレビを見ることは英語を学ぶよい方法だと思いますか？",
+    question: "Do you think having a part-time job is good for junior high school students?",
+    translation: "中学生がアルバイトをするのは良いことだと思いますか？",
     answers: {
-      yes: "Yes, I do. We can learn natural English and pronunciation from TV.",
-      no: "No, I don't. Just watching TV is not enough to really learn English."
+      yes: "Yes. I think it is good because students can learn how to manage their money. Also, they can understand the importance of hard work.",
+      no: "No. I don’t think so because it may make students tired and affect their studies. Also, some jobs may not be safe for young people."
     },
-    translations: {
-      yes: "はい、思います。テレビから自然な英語や発音を学べます。",
-      no: "いいえ、思いません。ただテレビを見るだけでは英語は本当に身につきません。"
+    answerTranslations: {
+      yes: "はい。お金の管理の仕方を学べるからです。また、働くことの大切さも理解できると思います。",
+      no: "いいえ。疲れて勉強に影響が出るかもしれないからです。また、中学生にとって安全ではない仕事もあります。"
     }
   },
   {
-    question: "Do you like to travel with your family?",
-    translation: "家族と旅行するのが好きですか？",
+    question: "Do you think students should bring smartphones to school?",
+    translation: "生徒は学校にスマートフォンを持って行くべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. I can make good memories with them and enjoy new places.",
-      no: "No, I don't. I prefer to stay home and relax."
+      yes: "Yes. I think smartphones are useful in emergencies. Also, students can use them to study during their free time.",
+      no: "No. I think smartphones can be a distraction. Also, they might be used to take pictures or videos without permission."
     },
-    translations: {
-      yes: "はい、好きです。家族とよい思い出を作れるし、新しい場所を楽しめます。",
-      no: "いいえ、好きではありません。家でリラックスする方が好きです。"
+    answerTranslations: {
+      yes: "はい。緊急時に役立つからです。また、空き時間に勉強するために使えると思います。",
+      no: "いいえ。スマートフォンは気が散る原因になると思います。また、許可なく写真や動画を撮ることもあるからです。"
     }
   },
   {
-    question: "Do you think learning English is important for your future?",
-    translation: "将来のために英語を学ぶことは大切だと思いますか？",
+    question: "Do you think school uniforms are necessary?",
+    translation: "学校の制服は必要だと思いますか？",
     answers: {
-      yes: "Yes, I do. English is useful for jobs and traveling.",
-      no: "No, I don't. I think other skills are more important."
+      yes: "Yes. Uniforms help students focus on their studies. Also, they make everyone look equal and avoid fashion competition.",
+      no: "No. I think students should wear clothes they like. Also, some uniforms are expensive and uncomfortable."
     },
-    translations: {
-      yes: "はい、思います。英語は仕事や旅行に役立ちます。",
-      no: "いいえ、思いません。他のスキルの方が大切だと思います。"
+    answerTranslations: {
+      yes: "はい。制服があることで勉強に集中しやすくなるからです。また、みんなが同じように見えるのでファッションの競争を避けられます。",
+      no: "いいえ。自分の好きな服を着たほうが良いと思います。また、制服は高価だったり着心地が悪かったりします。"
     }
   },
   {
-    question: "Do you often use the internet for study?",
-    translation: "勉強のためによくインターネットを使いますか？",
+    question: "Do you think junior high school students should study abroad?",
+    translation: "中学生が留学するべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. I find useful information online.",
-      no: "No, I don't. I prefer books and classes."
+      yes: "Yes. Studying abroad helps students learn new cultures. Also, it is a great way to improve their language skills.",
+      no: "No. It may be difficult for junior high students to live alone. Also, they can study foreign cultures online."
     },
-    translations: {
-      yes: "はい、よく使います。ネットで役立つ情報を見つけます。",
-      no: "いいえ、使いません。本や授業の方がいいです。"
+    answerTranslations: {
+      yes: "はい。留学することで新しい文化を学べるからです。また、言語のスキルを高める良い方法です。",
+      no: "いいえ。中学生には一人で暮らすのが難しいかもしれません。また、外国の文化はインターネットで学べます。"
     }
   },
   {
-    question: "Do you think exercise is important for health?",
-    translation: "健康のために運動は大切だと思いますか？",
+    question: "Do you think students should eat lunch at school?",
+    translation: "生徒は学校で昼食を食べるべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. Exercise keeps me strong and happy.",
-      no: "No, I don't. I think resting is more important."
+      yes: "Yes. Eating lunch at school can save time. Also, school lunches are usually balanced and healthy.",
+      no: "No. Some students may have allergies. Also, they may want to eat food from home."
     },
-    translations: {
-      yes: "はい、思います。運動は体を強く元気にします。",
-      no: "いいえ、思いません。休む方が大切だと思います。"
+    answerTranslations: {
+      yes: "はい。学校で昼食を食べると時間を節約できます。また、学校の給食はバランスがよく健康的です。",
+      no: "いいえ。アレルギーのある生徒もいますし、家の食事を食べたい人もいるからです。"
     }
   },
   {
-    question: "Do you want to study abroad someday?",
-    translation: "いつか留学したいですか？",
+    question: "Do you think students should use computers in class?",
+    translation: "生徒は授業でコンピューターを使うべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. I want to learn about different cultures.",
-      no: "No, I don't. I want to stay with my family."
+      yes: "Yes. Computers help students learn in different ways. Also, they are useful for researching topics quickly.",
+      no: "No. Students may focus on games instead of studying. Also, some students may not know how to use them well."
     },
-    translations: {
-      yes: "はい、したいです。いろいろな文化を学びたいです。",
-      no: "いいえ、したくないです。家族と一緒にいたいです。"
+    answerTranslations: {
+      yes: "はい。コンピューターを使うことでいろいろな学び方ができます。また、調べ学習にも便利です。",
+      no: "いいえ。ゲームに夢中になってしまうかもしれません。また、使い方が分からない生徒もいます。"
     }
   },
   {
-    question: "Do you think it is important to help others?",
-    translation: "人を助けることは大切だと思いますか？",
+    question: "Do you think it is important to learn English?",
+    translation: "英語を学ぶことは大切だと思いますか？",
     answers: {
-      yes: "Yes, I do. Helping others makes the world better.",
-      no: "No, I don't. I think people should take care of themselves."
+      yes: "Yes. English is used around the world. Learning it helps us communicate.",
+      no: "No. I think we can use translators and don’t need to learn English."
     },
-    translations: {
-      yes: "はい、思います。助け合いは世界を良くします。",
-      no: "いいえ、思いません。人は自分のことを守るべきです。"
+    answerTranslations: {
+      yes: "はい。英語は世界中で使われています。学ぶことでコミュニケーションができます。",
+      no: "いいえ。翻訳機があるので英語を学ぶ必要はないと思います。"
     }
   },
   {
-    question: "Do you like to read English books?",
-    translation: "英語の本を読むのが好きですか？",
+    question: "Do you think children should have less homework?",
+    translation: "子どもはもっと宿題を少なくすべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. It helps me learn new words.",
-      no: "No, I don't. I find it difficult."
+      yes: "Yes. Too much homework can be stressful. Children need free time.",
+      no: "No. Homework helps children study and learn better."
     },
-    translations: {
-      yes: "はい、好きです。新しい単語を学べます。",
-      no: "いいえ、好きではありません。難しいです。"
+    answerTranslations: {
+      yes: "はい。宿題が多すぎるとストレスになります。子どもは自由な時間が必要です。",
+      no: "いいえ。宿題は勉強の助けになります。"
     }
   },
   {
-    question: "Do you think using smartphones is good for students?",
-    translation: "学生がスマホを使うのはいいことだと思いますか？",
+    question: "Do you think schools should have more sports activities?",
+    translation: "学校はもっとスポーツ活動を増やすべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. Smartphones can help with learning.",
-      no: "No, I don't. They can be distracting."
+      yes: "Yes. Sports are good for health and teamwork.",
+      no: "No. Some students don’t like sports and should not be forced."
     },
-    translations: {
-      yes: "はい、思います。スマホは学習に役立ちます。",
-      no: "いいえ、思いません。注意が散ることがあります。"
+    answerTranslations: {
+      yes: "はい。スポーツは健康とチームワークに良いです。",
+      no: "いいえ。スポーツが好きでない生徒もいるので強制すべきではありません。"
     }
   },
   {
-    question: "Do you want to have a part-time job in the future?",
-    translation: "将来アルバイトをしたいですか？",
+    question: "Do you think students should eat breakfast every day?",
+    translation: "生徒は毎日朝ごはんを食べるべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. It will help me learn responsibility.",
-      no: "No, I don't. I want to focus on school."
+      yes: "Yes. Breakfast gives energy for the day.",
+      no: "No. Some students do not feel hungry in the morning."
     },
-    translations: {
-      yes: "はい、したいです。責任感が学べます。",
-      no: "いいえ、したくないです。学校に集中したいです。"
+    answerTranslations: {
+      yes: "はい。朝ごはんは一日のエネルギーになります。",
+      no: "いいえ。朝はお腹が空かない生徒もいます。"
     }
   },
   {
-    question: "Do you like to go to the library?",
-    translation: "図書館に行くのが好きですか？",
+    question: "Do you think watching TV is good for children?",
+    translation: "子どもがテレビを見るのは良いことだと思いますか？",
     answers: {
-      yes: "Yes, I do. I like reading many books there.",
-      no: "No, I don't. I prefer reading at home."
+      yes: "Yes. TV can be educational and fun.",
+      no: "No. Too much TV can be bad for children."
     },
-    translations: {
-      yes: "はい、好きです。図書館でたくさんの本を読みます。",
-      no: "いいえ、好きではありません。家で読む方が好きです。"
+    answerTranslations: {
+      yes: "はい。テレビは教育的で楽しいこともあります。",
+      no: "いいえ。テレビを見すぎるのは良くありません。"
     }
   },
   {
-    question: "Do you think it is important to learn about history?",
-    translation: "歴史を学ぶことは大切だと思いますか？",
+    question: "Do you think students should learn music at school?",
+    translation: "生徒は学校で音楽を学ぶべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. History helps us understand the world.",
-      no: "No, I don't. I think it is boring."
+      yes: "Yes. Music helps creativity and expression.",
+      no: "No. Some students don’t like music classes."
     },
-    translations: {
-      yes: "はい、思います。歴史は世界を理解するのに役立ちます。",
-      no: "いいえ、思いません。退屈だと思います。"
+    answerTranslations: {
+      yes: "はい。音楽は創造力や表現力を助けます。",
+      no: "いいえ。音楽の授業が好きでない生徒もいます。"
     }
   },
   {
-    question: "Do you like to cook?",
-    translation: "料理をするのが好きですか？",
+    question: "Do you think schools should have longer holidays?",
+    translation: "学校はもっと長い休みがあるべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. I like making simple dishes.",
-      no: "No, I don't. I prefer eating food made by others."
+      yes: "Yes. Longer holidays help students rest and travel.",
+      no: "No. Short holidays keep students focused."
     },
-    translations: {
-      yes: "はい、好きです。簡単な料理を作るのが好きです。",
-      no: "いいえ、好きではありません。他の人が作った料理を食べる方が好きです。"
+    answerTranslations: {
+      yes: "はい。長い休みは学生が休んだり旅行したりするのに良いです。",
+      no: "いいえ。短い休みの方が集中できます。"
+    }
+  },
+  {
+    question: "Do you think students should wear uniforms?",
+    translation: "生徒は制服を着るべきだと思いますか？",
+    answers: {
+      yes: "Yes. Uniforms make students look equal.",
+      no: "No. Students should wear what they like."
+    },
+    answerTranslations: {
+      yes: "はい。制服は生徒が平等に見えます。",
+      no: "いいえ。好きな服を着るべきです。"
+    }
+  },
+  {
+    question: "Do you think students should help in housework?",
+    translation: "生徒は家の手伝いをするべきだと思いますか？",
+    answers: {
+      yes: "Yes. Helping at home teaches responsibility.",
+      no: "No. Students should focus on studying."
+    },
+    answerTranslations: {
+      yes: "はい。家の手伝いは責任感を教えます。",
+      no: "いいえ。勉強に集中すべきです。"
     }
   },
   {
     question: "Do you think it is important to save money?",
     translation: "お金を貯めることは大切だと思いますか？",
     answers: {
-      yes: "Yes, I do. Saving money helps in emergencies.",
-      no: "No, I don't. I like to spend money on fun things."
+      yes: "Yes. Saving money helps in the future.",
+      no: "No. It is better to spend money now."
     },
-    translations: {
-      yes: "はい、思います。貯金は緊急時に役立ちます。",
-      no: "いいえ、思いません。楽しいことにお金を使いたいです。"
+    answerTranslations: {
+      yes: "はい。貯金は将来役に立ちます。",
+      no: "いいえ。今お金を使う方が良いです。"
     }
   },
   {
-    question: "Do you like to study English grammar?",
-    translation: "英語の文法を勉強するのが好きですか？",
+    question: "Do you think students should learn about the environment?",
+    translation: "生徒は環境について学ぶべきだと思いますか？",
     answers: {
-      yes: "Yes, I do. Grammar helps me speak correctly.",
-      no: "No, I don't. I find it difficult and boring."
+      yes: "Yes. It is important to protect nature.",
+      no: "No. Other subjects are more important."
     },
-    translations: {
-      yes: "はい、好きです。文法は正しく話すのに役立ちます。",
-      no: "いいえ、好きではありません。難しくて退屈です。"
-    }
-  },
-  {
-    question: "Do you think pets are important in families?",
-    translation: "ペットは家族にとって大切だと思いますか？",
-    answers: {
-      yes: "Yes, I do. Pets make people happy.",
-      no: "No, I don't. Pets are sometimes troublesome."
-    },
-    translations: {
-      yes: "はい、思います。ペットは人を幸せにします。",
-      no: "いいえ、思いません。ペットは時々面倒です。"
-    }
-  },
-  {
-    question: "Do you want to learn about other countries?",
-    translation: "他の国について学びたいですか？",
-    answers: {
-      yes: "Yes, I do. It helps me understand the world.",
-      no: "No, I don't. I want to focus on my own country."
-    },
-    translations: {
-      yes: "はい、学びたいです。世界を理解するのに役立ちます。",
-      no: "いいえ、学びたくないです。自分の国に集中したいです。"
-    }
-  },
-  {
-    question: "Do you like to listen to stories?",
-    translation: "お話を聞くのが好きですか？",
-    answers: {
-      yes: "Yes, I do. I like fairy tales and fun stories.",
-      no: "No, I don't. I prefer reading books."
-    },
-    translations: {
-      yes: "はい、好きです。おとぎ話や楽しい話が好きです。",
-      no: "いいえ、好きではありません。本を読む方が好きです。"
-    }
-  },
-  {
-    question: "Do you want to be a teacher someday?",
-    translation: "いつか先生になりたいですか？",
-    answers: {
-      yes: "Yes, I do. I like helping others learn.",
-      no: "No, I don't. I want to do something else."
-    },
-    translations: {
-      yes: "はい、なりたいです。人に教えるのが好きです。",
-      no: "いいえ、なりたくないです。別のことをしたいです。"
-    }
-  },
-  {
-    question: "Do you think it is important to recycle?",
-    translation: "リサイクルは大切だと思いますか？",
-    answers: {
-      yes: "Yes, I do. Recycling helps protect the environment.",
-      no: "No, I don't. I think it is difficult."
-    },
-    translations: {
-      yes: "はい、思います。リサイクルは環境を守ります。",
-      no: "いいえ、思いません。難しいと思います。"
-    }
-  },
-  {
-    question: "Do you like to make new friends?",
-    translation: "新しい友だちを作るのが好きですか？",
-    answers: {
-      yes: "Yes, I do. Meeting new people is fun.",
-      no: "No, I don't. I like my close friends."
-    },
-    translations: {
-      yes: "はい、好きです。新しい人に会うのは楽しいです。",
-      no: "いいえ、好きではありません。親しい友だちが好きです。"
+    answerTranslations: {
+      yes: "はい。自然を守ることは大切です。",
+      no: "いいえ。他の教科の方が大切です。"
     }
   }
 ];

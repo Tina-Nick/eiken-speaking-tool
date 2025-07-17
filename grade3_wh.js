@@ -12,39 +12,27 @@
     }
   },
   {
-    question: "What is your favorite season?",
-    translation: "好きな季節は何ですか？",
+    question: "Where do you like to go on holidays?",
+    translation: "休日はどこに行くのが好きですか？",
     answers: {
-      short: "I like spring.",
-      long: "I like spring because I can see cherry blossoms and the weather is nice."
+      short: "I like to go to the park.",
+      long: "I like to go to the park and play with my friends."
     },
     translations: {
-      short: "春が好きです。",
-      long: "春が好きです。桜が見られて天気もいいからです。"
+      short: "公園に行くのが好きです。",
+      long: "公園に行って友だちと遊ぶのが好きです。"
     }
   },
   {
-    question: "What do you do in the morning?",
-    translation: "朝に何をしますか？",
+    question: "What is your favorite food?",
+    translation: "好きな食べ物は何ですか？",
     answers: {
-      short: "I eat breakfast.",
-      long: "I eat breakfast and brush my teeth."
+      short: "My favorite food is pizza.",
+      long: "My favorite food is pizza because it tastes good."
     },
     translations: {
-      short: "朝ごはんを食べます。",
-      long: "朝ごはんを食べて歯をみがきます。"
-    }
-  },
-  {
-    question: "Where do you live?",
-    translation: "どこに住んでいますか？",
-    answers: {
-      short: "I live in Tokyo.",
-      long: "I live in Tokyo with my family."
-    },
-    translations: {
-      short: "東京に住んでいます。",
-      long: "家族と一緒に東京に住んでいます。"
+      short: "好きな食べ物はピザです。",
+      long: "ピザが好きです。おいしいからです。"
     }
   },
   {
@@ -105,18 +93,6 @@
     translations: {
       short: "ご飯と野菜を食べます。",
       long: "健康にいいので、ご飯と野菜を食べます。"
-    }
-  },
-  {
-    question: "Where do you like to go on holidays?",
-    translation: "休日はどこに行くのが好きですか？",
-    answers: {
-      short: "I like to go to the park.",
-      long: "I like to go to the park and play with my friends."
-    },
-    translations: {
-      short: "公園に行くのが好きです。",
-      long: "公園に行って友だちと遊ぶのが好きです。"
     }
   },
   {
@@ -188,9 +164,67 @@
     },
     translations: {
       short: "好きな歌手はリサです。",
-      long: "リサの歌が好きだからです。"
+      long: "彼女の歌が好きなのでリサが好きです。"
     }
   },
   {
-    question: "When do you usually study English?",
-    translation: "普段いつ英語を
+    question: "When do you study English?",
+    translation: "いつ英語を勉強しますか？",
+    answers: {
+      short: "I study English after school.",
+      long: "I study English after school and on weekends."
+    },
+    translations: {
+      short: "放課後に英語を勉強します。",
+      long: "放課後と週末に英語を勉強します。"
+    }
+  },
+  {
+    question: "Why do you like music?",
+    translation: "なぜ音楽が好きですか？",
+    answers: {
+      short: "I like music because it is fun.",
+      long: "Music makes me happy and helps me relax."
+    },
+    translations: {
+      short: "楽しいから音楽が好きです。",
+      long: "音楽は楽しくてリラックスできます。"
+    }
+  },
+  {
+    question: "What do you want to eat today?",
+    translation: "今日は何を食べたいですか？",
+    answers: {
+      short: "I want to eat pizza.",
+      long: "I want to eat pizza because it tastes good."
+    },
+    translations: {
+      short: "ピザが食べたいです。",
+      long: "おいしいのでピザが食べたいです。"
+    }
+  },
+  {
+    question: "Where do you live?",
+    translation: "どこに住んでいますか？",
+    answers: {
+      short: "I live in Tokyo.",
+      long: "I live in Tokyo with my family."
+    },
+    translations: {
+      short: "東京に住んでいます。",
+      long: "家族と東京に住んでいます。"
+    }
+  },
+  {
+    question: "Who do you talk to every day?",
+    translation: "毎日誰と話しますか？",
+    answers: {
+      short: "I talk to my friends.",
+      long: "I talk to my friends at school and at home."
+    },
+    translations: {
+      short: "友だちと話します。",
+      long: "学校と家で友だちと話します。"
+    }
+  }
+];
