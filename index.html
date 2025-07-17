@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Eiken 3rd Grade Speaking Practice</title>
+  <title>英検3級 Q3 / Q4 & Wh-question 練習</title>
   <style>
     body { font-family: sans-serif; padding: 20px; }
     button { margin: 5px; padding: 10px 15px; font-size: 16px; }
@@ -12,8 +12,10 @@
   </style>
 </head>
 <body>
-  <h1>英検3級 Q3 / Q4 練習</h1>
-  <button onclick="showQuestion()">お題を表示</button>
+  <h1>英検3級 Q3 / Q4 & Wh-question 練習</h1>
+
+  <!-- Yes/No 質問 -->
+  <button onclick="showQuestion()">お題を表示（Yes / No）</button>
   <div class="card" id="questionCard" style="display:none;">
     <h2 id="questionText"></h2>
     <button onclick="showAnswer('yes')">Yesの答えを表示</button>
@@ -22,7 +24,18 @@
     <div class="answer" id="noAnswer"></div>
   </div>
 
+  <!-- Wh-question -->
+  <button onclick="showWhQuestion()">お題を表示（Wh-question）</button>
+  <div class="card" id="whCard" style="display:none;">
+    <h2 id="whQuestionText"></h2>
+    <button onclick="showWhAnswer('short')">短い答え</button>
+    <button onclick="showWhAnswer('long')">長い答え</button>
+    <div class="answer" id="shortAnswer"></div>
+    <div class="answer" id="longAnswer"></div>
+  </div>
+
   <script src="grade3.js"></script>
+  <script src="grade3_wh.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
