@@ -1,142 +1,196 @@
 ﻿const grade3_wh_questions = [
   {
-    question: "What kind of movies do you like?",
+    question: "What do you usually do after school?",
+    translation: "放課後はたいてい何をしますか？",
     answers: {
-      short: "I like action and comedy movies.",
-      long: "I like action and comedy movies because they are fun and make me happy."
+      short: "I do my homework.",
+      long: "I do my homework and then play video games."
+    },
+    translations: {
+      short: "宿題をします。",
+      long: "宿題をしてからテレビゲームをします。"
     }
   },
   {
-    question: "What did you do last weekend?",
+    question: "What is your favorite season?",
+    translation: "好きな季節は何ですか？",
     answers: {
-      short: "I studied English and watched TV.",
-      long: "I studied English for my test and watched a nice movie at home."
+      short: "I like spring.",
+      long: "I like spring because I can see cherry blossoms and the weather is nice."
+    },
+    translations: {
+      short: "春が好きです。",
+      long: "春が好きです。桜が見られて天気もいいからです。"
     }
   },
   {
-    question: "Where do you like to go with your friends?",
+    question: "What do you do in the morning?",
+    translation: "朝に何をしますか？",
     answers: {
-      short: "I like to go to the park.",
-      long: "I like to go to the park with my friends and we play games together."
+      short: "I eat breakfast.",
+      long: "I eat breakfast and brush my teeth."
+    },
+    translations: {
+      short: "朝ごはんを食べます。",
+      long: "朝ごはんを食べて歯をみがきます。"
     }
   },
   {
-    question: "When do you usually go to bed?",
+    question: "Where do you live?",
+    translation: "どこに住んでいますか？",
     answers: {
-      short: "I usually go to bed at ten o'clock.",
-      long: "I usually go to bed at ten o'clock because I want to get enough sleep."
+      short: "I live in Tokyo.",
+      long: "I live in Tokyo with my family."
+    },
+    translations: {
+      short: "東京に住んでいます。",
+      long: "家族と一緒に東京に住んでいます。"
     }
   },
   {
-    question: "How do you come to school?",
+    question: "Who is your best friend?",
+    translation: "一番の友だちは誰ですか？",
     answers: {
-      short: "I come by bus.",
-      long: "I come by bus because it is fast and easy."
+      short: "My best friend is Tom.",
+      long: "My best friend is Tom. We like playing soccer together."
+    },
+    translations: {
+      short: "一番の友だちはトムです。",
+      long: "一番の友だちはトムです。いっしょにサッカーをするのが好きです。"
     }
   },
   {
-    question: "Who do you enjoy talking with?",
+    question: "When do you usually get up?",
+    translation: "たいてい何時に起きますか？",
     answers: {
-      short: "I enjoy talking with my best friend.",
-      long: "I enjoy talking with my best friend because we understand each other well."
+      short: "I usually get up at 7 a.m.",
+      long: "I usually get up at 7 a.m. and eat breakfast."
+    },
+    translations: {
+      short: "たいてい朝7時に起きます。",
+      long: "たいてい朝7時に起きて、朝ごはんを食べます。"
     }
   },
   {
-    question: "What is your favorite subject?",
+    question: "Why do you like your school?",
+    translation: "なぜ学校が好きですか？",
     answers: {
-      short: "My favorite subject is math.",
-      long: "My favorite subject is math because I like solving problems."
+      short: "I like my school because my friends are there.",
+      long: "I like my school because my friends are there and teachers are kind."
+    },
+    translations: {
+      short: "友だちがいるから学校が好きです。",
+      long: "友だちがいて先生も優しいから学校が好きです。"
     }
   },
   {
     question: "What do you want to be in the future?",
+    translation: "将来何になりたいですか？",
     answers: {
-      short: "I want to be a doctor.",
-      long: "I want to be a doctor to help sick people and make them feel better."
+      short: "I want to be a teacher.",
+      long: "I want to be a teacher because I like helping people."
+    },
+    translations: {
+      short: "先生になりたいです。",
+      long: "人を助けるのが好きなので、先生になりたいです。"
     }
   },
   {
-    question: "Where do you like to spend your holidays?",
+    question: "What do you eat for lunch?",
+    translation: "昼ごはんに何を食べますか？",
     answers: {
-      short: "I like to spend holidays at the beach.",
-      long: "I like to spend holidays at the beach because I enjoy swimming and relaxing."
+      short: "I eat rice and vegetables.",
+      long: "I eat rice and vegetables because they are healthy."
+    },
+    translations: {
+      short: "ご飯と野菜を食べます。",
+      long: "健康にいいので、ご飯と野菜を食べます。"
     }
   },
   {
-    question: "When do you usually study English?",
+    question: "Where do you like to go on holidays?",
+    translation: "休日はどこに行くのが好きですか？",
     answers: {
-      short: "I usually study English in the evening.",
-      long: "I usually study English in the evening because I have more free time then."
+      short: "I like to go to the park.",
+      long: "I like to go to the park and play with my friends."
+    },
+    translations: {
+      short: "公園に行くのが好きです。",
+      long: "公園に行って友だちと遊ぶのが好きです。"
     }
   },
   {
-    question: "How often do you play sports?",
+    question: "Who helps you with your homework?",
+    translation: "宿題を手伝ってくれるのは誰ですか？",
     answers: {
-      short: "I play sports two times a week.",
-      long: "I play sports two times a week because it keeps me healthy."
+      short: "My mother helps me.",
+      long: "My mother helps me because she is good at English."
+    },
+    translations: {
+      short: "母が手伝ってくれます。",
+      long: "母は英語が得意なので、手伝ってくれます。"
     }
   },
   {
-    question: "Who do you admire?",
+    question: "When do you go to bed?",
+    translation: "何時に寝ますか？",
     answers: {
-      short: "I admire my mother.",
-      long: "I admire my mother because she works hard and cares for our family."
+      short: "I go to bed at 9 p.m.",
+      long: "I go to bed at 9 p.m. to get enough sleep."
+    },
+    translations: {
+      short: "午後9時に寝ます。",
+      long: "十分寝るために午後9時に寝ます。"
     }
   },
   {
-    question: "What do you usually eat for breakfast?",
+    question: "Why do you like sports?",
+    translation: "なぜスポーツが好きですか？",
     answers: {
-      short: "I usually eat toast and eggs.",
-      long: "I usually eat toast and eggs because they give me energy for the day."
+      short: "I like sports because they are fun.",
+      long: "I like sports because they are fun and keep me healthy."
+    },
+    translations: {
+      short: "楽しいからスポーツが好きです。",
+      long: "楽しいし健康にもいいからスポーツが好きです。"
     }
   },
   {
-    question: "What do you do after school?",
+    question: "What do you do in your free time?",
+    translation: "暇なときに何をしますか？",
     answers: {
-      short: "I do my homework and watch TV.",
-      long: "I do my homework and watch TV to relax after a busy day."
+      short: "I read books.",
+      long: "I read books and sometimes watch TV."
+    },
+    translations: {
+      short: "本を読みます。",
+      long: "本を読んだり時々テレビを見たりします。"
     }
   },
   {
     question: "Where do you want to travel?",
+    translation: "どこに旅行したいですか？",
     answers: {
-      short: "I want to travel to Hawaii.",
-      long: "I want to travel to Hawaii because I like warm weather and beaches."
+      short: "I want to travel to America.",
+      long: "I want to travel to America because I like English."
+    },
+    translations: {
+      short: "アメリカに旅行したいです。",
+      long: "英語が好きなのでアメリカに旅行したいです。"
     }
   },
   {
-    question: "When do you celebrate your birthday?",
+    question: "Who is your favorite singer?",
+    translation: "好きな歌手は誰ですか？",
     answers: {
-      short: "I celebrate my birthday in July.",
-      long: "I celebrate my birthday in July with my family and friends."
+      short: "My favorite singer is Lisa.",
+      long: "My favorite singer is Lisa because I like her songs."
+    },
+    translations: {
+      short: "好きな歌手はリサです。",
+      long: "リサの歌が好きだからです。"
     }
   },
   {
-    question: "How do you spend your free time?",
-    answers: {
-      short: "I read books in my free time.",
-      long: "I read books in my free time because I enjoy learning new things."
-    }
-  },
-  {
-    question: "Who do you like to spend time with?",
-    answers: {
-      short: "I like to spend time with my family.",
-      long: "I like to spend time with my family because we have fun together."
-    }
-  },
-  {
-    question: "What do you want to learn?",
-    answers: {
-      short: "I want to learn how to cook.",
-      long: "I want to learn how to cook because it is an important skill."
-    }
-  },
-  {
-    question: "Where do you usually go shopping?",
-    answers: {
-      short: "I usually go shopping at the mall.",
-      long: "I usually go shopping at the mall because it has many shops."
-    }
-  }
-];
+    question: "When do you usually study English?",
+    translation: "普段いつ英語を
