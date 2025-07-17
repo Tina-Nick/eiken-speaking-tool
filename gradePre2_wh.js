@@ -1,194 +1,107 @@
 ﻿const gradePre2_wh_questions = [
   {
-    question: "Some people say that children today don't often help their parents. Do you usually help your parents at home?",
-    translation: "最近の子どもはあまり親を手伝わないと言う人がいます。あなたは家で親を手伝いますか？",
+    question: "質問②: Some people say that children should start learning English at a young age. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I usually help them by washing dishes or cleaning my room. Also, I sometimes go shopping with my mother.",
-      no: "No. I don't help them very often because I have a lot of homework. Also, I feel tired after school."
-    },
-    answerTranslations: {
-      yes: "はい、皿洗いや自分の部屋の掃除をして手伝っています。また、ときどき母と一緒に買い物にも行きます。",
-      no: "いいえ、あまり手伝いません。宿題が多いし、学校のあとで疲れているからです。"
+      yes: "Yes, I agree. It is easier to learn a new language when we are young. Also, it can help us enjoy learning English more in the future.",
+      no: "No, I don't agree. Young children should first learn their own language well. Also, English classes may be too difficult for them."
     }
   },
   {
-    question: "Some people say that young people don’t read many books these days. Do you often read books in your free time?",
-    translation: "最近の若者はあまり本を読まないと言う人がいます。あなたは自由な時間に本をよく読みますか？",
+    question: "質問②: Some people say that students should do more homework. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I often read comic books and novels at home. Reading helps me relax and learn new words.",
-      no: "No. I don't read books very often because I like watching videos online. Also, I think reading takes a lot of time."
-    },
-    answerTranslations: {
-      yes: "はい、家でよく漫画や小説を読みます。本を読むとリラックスできるし、新しい言葉も学べます。",
-      no: "いいえ、あまり本を読みません。動画を見るほうが好きだし、読書は時間がかかると思います。"
+      yes: "Yes, I agree. Homework helps students remember what they learned at school. Also, it teaches them how to study by themselves.",
+      no: "No, I don't agree. Too much homework makes students tired. Also, they need time to play and relax after school."
     }
   },
   {
-    question: "These days, many children use smartphones. Do you think it is a good idea for young children to use smartphones?",
-    translation: "最近、多くの子どもがスマートフォンを使っています。小さな子どもがスマートフォンを使うのは良いと思いますか？",
+    question: "質問②: Some people say that using computers in class is good for students. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I think it is good because they can watch educational videos. Also, they can contact their parents when needed.",
-      no: "No. I don't think so because smartphones can be bad for their eyes. Also, they might play games too much."
-    },
-    answerTranslations: {
-      yes: "はい。教育的な動画を見ることができるからです。また、必要なときに親と連絡をとることもできます。",
-      no: "いいえ。スマートフォンは目に悪いからです。また、ゲームをやりすぎるかもしれません。"
+      yes: "Yes, I agree. Computers help students learn in fun ways like videos or games. Also, they can find a lot of information quickly.",
+      no: "No, I don't agree. Students may use computers to play games. Also, they might not learn to write or read from books well."
     }
   },
   {
-    question: "Some people say that children spend too much time watching TV. Do you think watching TV is bad for children?",
-    translation: "子どもはテレビを見すぎだと言う人がいます。テレビを見るのは子どもに悪いと思いますか？",
+    question: "質問②: Some people say that it is better to study with friends than to study alone. Do you agree with this idea?",
     answers: {
-      yes: "Yes. Watching too much TV can harm children’s health. They should play outside more.",
-      no: "No. TV can be educational and fun if watched in moderation."
-    },
-    answerTranslations: {
-      yes: "はい。テレビを見すぎると子どもの健康に悪いです。もっと外で遊ぶべきです。",
-      no: "いいえ。適度に見れば教育的で楽しいです。"
+      yes: "Yes, I agree. Studying with friends is fun and we can help each other. Also, it can make difficult things easier to understand.",
+      no: "No, I don't agree. Friends may talk too much, so I can't focus. Also, I learn better when I study alone quietly."
     }
   },
   {
-    question: "These days, many people use the internet for information. Do you think the internet is useful?",
-    translation: "最近、多くの人が情報を得るためにインターネットを使っています。インターネットは役に立つと思いますか？",
+    question: "質問②: Some people say that people should walk or ride bikes instead of driving cars. Do you agree with this idea?",
     answers: {
-      yes: "Yes. The internet helps us find information quickly and easily.",
-      no: "No. Sometimes the information on the internet is wrong or harmful."
-    },
-    answerTranslations: {
-      yes: "はい。インターネットは情報を早く簡単に見つけられます。",
-      no: "いいえ。インターネットの情報は間違っていたり害があることもあります。"
+      yes: "Yes, I agree. Walking and biking are good for our health. Also, they are better for the environment than cars.",
+      no: "No, I don't agree. Some people live far from school or work. Also, it can be hard to walk or bike on rainy days."
     }
   },
   {
-    question: "Some people say that children today do not like reading books. Do you like reading books?",
-    translation: "最近の子どもは本を読むのが好きではないと言う人がいます。あなたは本を読むのが好きですか？",
+    question: "質問②: Some people say that eating with family is important. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I like reading books because they teach me new things.",
-      no: "No. I prefer watching videos or playing games."
-    },
-    answerTranslations: {
-      yes: "はい。本を読むと新しいことが学べるので好きです。",
-      no: "いいえ。動画を見たりゲームをしたりするほうが好きです。"
+      yes: "Yes, I agree. Eating together helps us talk about our day. Also, it makes family relationships stronger.",
+      no: "No, I don't agree. People are busy and have different schedules. Also, I like eating alone while watching TV."
     }
   },
   {
-    question: "Some people say that children today don’t help with housework. Do you help with housework at home?",
-    translation: "最近の子どもは家事をあまり手伝わないと言う人がいます。あなたは家で家事を手伝いますか？",
+    question: "質問②: Some people say that having many friends is better than having a few close friends. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I help by cleaning and washing dishes. It is important to help my family.",
-      no: "No. I am too busy with schoolwork to help at home."
-    },
-    answerTranslations: {
-      yes: "はい。掃除や皿洗いをして手伝います。家族の助けは大切です。",
-      no: "いいえ。学校の勉強で忙しくて手伝えません。"
+      yes: "Yes, I agree. Having many friends helps us learn different ideas. Also, we can enjoy talking with many people.",
+      no: "No, I don't agree. A few close friends are more important. Also, I can talk to them about anything and feel relaxed."
     }
   },
   {
-    question: "Some people say that children spend too much time playing video games. Do you think video games are bad?",
-    translation: "子どもはテレビゲームをやりすぎだと言う人がいます。テレビゲームは悪いと思いますか？",
+    question: "質問②: Some people say that schools should have more events like sports festivals. Do you agree with this idea?",
     answers: {
-      yes: "Yes. Playing too much video games can hurt children’s eyes and health.",
-      no: "No. Video games can be fun and help us think carefully."
-    },
-    answerTranslations: {
-      yes: "はい。テレビゲームをやりすぎると目や健康に悪いです。",
-      no: "いいえ。テレビゲームは楽しくて考える力もつきます。"
+      yes: "Yes, I agree. School events are fun and help students work together. Also, they can make good memories with friends.",
+      no: "No, I don't agree. Preparing for events takes a lot of time. Also, some students don’t enjoy big events."
     }
   },
   {
-    question: "Some people say that students should study English more. Do you think it is important to study English?",
-    translation: "もっと英語を勉強すべきだと言う人がいます。英語を勉強することは大切だと思いますか？",
+    question: "質問②: Some people say that using smartphones at school is a good idea. Do you agree with this idea?",
     answers: {
-      yes: "Yes. English is used around the world and helps us communicate.",
-      no: "No. I think we can use translators and don’t have to study English hard."
-    },
-    answerTranslations: {
-      yes: "はい。英語は世界中で使われていて、コミュニケーションに役立ちます。",
-      no: "いいえ。翻訳機を使えば英語を頑張って勉強しなくてもいいと思います。"
+      yes: "Yes, I agree. Students can use them to search for information. Also, they can learn new things with apps and videos.",
+      no: "No, I don't agree. Students might use them for games or SNS. Also, they may not listen to the teacher carefully."
     }
   },
   {
-    question: "Some people say that children today don’t exercise enough. Do you often do sports or exercise?",
-    translation: "最近の子どもは運動不足だと言う人がいます。あなたはよくスポーツや運動をしますか？",
+    question: "質問②: Some people say that people should watch the news every day. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I play soccer and ride my bike every week.",
-      no: "No. I prefer to stay inside and play video games."
-    },
-    answerTranslations: {
-      yes: "はい。毎週サッカーをしたり自転車に乗ったりします。",
-      no: "いいえ。家の中でテレビゲームをする方が好きです。"
+      yes: "Yes, I agree. Watching the news helps us know what is happening in the world. Also, it is good for learning about society.",
+      no: "No, I don't agree. Some news is difficult or sad. Also, many people are too busy to watch it every day."
     }
   },
   {
-    question: "Some people say that children should go to bed earlier. Do you usually go to bed early?",
-    translation: "子どもはもっと早く寝るべきだと言う人がいます。あなたはたいてい早く寝ますか？",
+    question: "質問②: Some people say that it is better to go to school than to study online. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I go to bed at 9 p.m. to get enough sleep.",
-      no: "No. I usually stay up late doing homework or watching videos."
-    },
-    answerTranslations: {
-      yes: "はい。十分寝るために午後9時に寝ます。",
-      no: "いいえ。宿題や動画を見ていて遅くまで起きています。"
+      yes: "Yes, I agree. At school, we can meet our friends and ask teachers questions. Also, it is easier to focus in a classroom.",
+      no: "No, I don't agree. Studying online saves time and is more comfortable. Also, students can study at their own speed."
     }
   },
   {
-    question: "Some people say that children should eat healthy food. Do you usually eat healthy food?",
-    translation: "子どもは健康的な食べ物を食べるべきだと言う人がいます。あなたは普段健康的な食べ物を食べますか？",
+    question: "質問②: Some people say that junior high school students should have more free time. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I usually eat vegetables, fruits, and rice.",
-      no: "No. I like sweets and fast food more."
-    },
-    answerTranslations: {
-      yes: "はい。普段は野菜や果物、ご飯を食べます。",
-      no: "いいえ。甘いものやファストフードの方が好きです。"
+      yes: "Yes, I agree. Free time helps students relax and enjoy hobbies. Also, it gives them time to spend with family and friends.",
+      no: "No, I don't agree. Students need to study and join activities. Also, having too much free time can be bad for their future."
     }
   },
   {
-    question: "Some people say that children should spend less time using smartphones. Do you agree?",
-    translation: "子どもはスマホの使用時間を減らすべきだと言う人がいます。あなたはそう思いますか？",
+    question: "質問②: Some people say that people should not eat fast food often. Do you agree with this idea?",
     answers: {
-      yes: "Yes. Using smartphones too much can be bad for eyes and sleep.",
-      no: "No. Smartphones help me study and talk with friends."
-    },
-    answerTranslations: {
-      yes: "はい。スマホを使いすぎると目や睡眠に悪いです。",
-      no: "いいえ。スマホは勉強や友達と話すのに役立ちます。"
+      yes: "Yes, I agree. Fast food is not very healthy. Also, eating it often can make people sick or gain weight.",
+      no: "No, I don't agree. Fast food is quick and cheap. Also, people can choose healthy items if they want."
     }
   },
   {
-    question: "Some people say that schools should have more art classes. Do you think art classes are important?",
-    translation: "学校はもっと美術の授業を増やすべきだと言う人がいます。美術の授業は大切だと思いますか？",
+    question: "質問②: Some people say that watching movies is a good way to learn English. Do you agree with this idea?",
     answers: {
-      yes: "Yes. Art classes help students be creative and express themselves.",
-      no: "No. Some students don’t like art and prefer other subjects."
-    },
-    answerTranslations: {
-      yes: "はい。美術の授業は創造力を伸ばし、自分を表現する助けになります。",
-      no: "いいえ。美術が好きでない生徒もいて、他の教科がいいと思います。"
+      yes: "Yes, I agree. Movies show real English and are fun to watch. Also, we can learn how native speakers talk.",
+      no: "No, I don't agree. Movies are sometimes too difficult to understand. Also, it's hard to learn grammar or spelling from them."
     }
   },
   {
-    question: "Some people say that children should help in the kitchen. Do you help your family cook or prepare meals?",
-    translation: "子どもは台所を手伝うべきだと言う人がいます。あなたは家族の料理や準備を手伝いますか？",
+    question: "質問②: Some people say that students should wear school uniforms. Do you agree with this idea?",
     answers: {
-      yes: "Yes. I help by washing vegetables and setting the table.",
-      no: "No. I don’t help much because I am busy with schoolwork."
-    },
-    answerTranslations: {
-      yes: "はい。野菜を洗ったり、テーブルを準備したりして手伝います。",
-      no: "いいえ。学校の勉強で忙しくてあまり手伝いません。"
-    }
-  },
-  {
-    question: "Some people say that children should learn about different cultures. Do you think it is important?",
-    translation: "子どもは違う文化について学ぶべきだと言う人がいます。それは大切だと思いますか？",
-    answers: {
-      yes: "Yes. Learning about cultures helps us understand and respect others.",
-      no: "No. I think it is more important to study science and math."
-    },
-    answerTranslations: {
-      yes: "はい。文化を学ぶことで他の人を理解し、尊重できます。",
-      no: "いいえ。科学や数学の勉強の方が大切だと思います。"
+      yes: "Yes, I agree. Uniforms help students look the same and focus on study. Also, students don’t have to think about what to wear.",
+      no: "No, I don't agree. Students should wear what they like. Also, uniforms can be expensive and not comfortable."
     }
   }
 ];
