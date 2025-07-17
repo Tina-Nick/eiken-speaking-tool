@@ -2,53 +2,145 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>英検スピーキング練習ツール</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>英検 準2級・3級 Q&A 練習</title>
   <style>
     body { font-family: sans-serif; padding: 20px; }
-    select, button { margin: 5px; padding: 10px 15px; font-size: 16px; }
+    button { margin: 5px; padding: 10px 15px; font-size: 16px; }
     .card { border: 1px solid #ccc; border-radius: 8px; padding: 15px; margin-top: 20px; }
-    .answer { margin-top: 10px; display: none; }
+    .answer, .translation { margin-top: 10px; display: none; }
+    select { font-size: 16px; padding: 5px; }
   </style>
 </head>
 <body>
-  <h1>英検スピーキング練習ツール</h1>
+  <h1>英検 準2級・3級 Q&A 練習</h1>
 
-  <label for="gradeSelect">級を選ぶ：</label>
+  <label for="gradeSelect">級を選択：</label>
   <select id="gradeSelect">
-    <option value="grade3">3級</option>
+    <option value="3">3級</option>
     <option value="pre2">準2級</option>
   </select>
 
-  <label for="typeSelect">質問タイプ：</label>
-  <select id="typeSelect">
-    <option value="yesno">Yes / No（Q3 / Q4）</option>
-    <option value="wh">Wh-質問（Q4 / Q5）</option>
-  </select>
-
-  <button onclick="showUnifiedQuestion()">お題を表示</button>
-
-  <div class="card" id="questionCard" style="display:none;">
-    <h3 id="preText" style="color: gray;"></h3>
-    <h2 id="questionText"></h2>
-    <button onclick="showUnifiedAnswer('yes')">Yesの答え</button>
-    <button onclick="showUnifiedAnswer('no')">Noの答え</button>
-    <div class="answer" id="yesAnswer"></div>
-    <div class="answer" id="noAnswer"></div>
+  <div>
+    <button onclick="showQuestion()">お題を表示（Yes / No）</button>
+    <div class="card" id="questionCard" style="display:none;">
+      <h2 id="questionText"></h2>
+      <p><button onclick="toggleTranslation('question')">和訳を表示</button></p>
+      <p class="translation" id="questionTranslation"></p>
+      <button onclick="showAnswer('yes')">Yesの答えを表示</button>
+      <button onclick="showAnswer('no')">Noの答えを表示</button>
+      <div class="answer" id="yesAnswer"></div>
+      <p><button onclick="toggleTranslation('yes')">和訳を表示</button></p>
+      <p class="translation" id="yesTranslation"></p>
+      <div class="answer" id="noAnswer"></div>
+      <p><button onclick="toggleTranslation('no')">和訳を表示</button></p>
+      <p class="translation" id="noTranslation"></p>
+    </div>
   </div>
 
-  <div class="card" id="whCard" style="display:none;">
-    <h2 id="whQuestionText"></h2>
-    <button onclick="showUnifiedAnswer('short')">短い答え</button>
-    <button onclick="showUnifiedAnswer('long')">長い答え</button>
-    <div class="answer" id="shortAnswer"></div>
-    <div class="answer" id="longAnswer"></div>
+  <div>
+    <button onclick="showWhQuestion()">お題を表示（Wh-質問）</button>
+    <div class="card" id="whCard" style="display:none;">
+      <h2 id="whQuestionText"></h2>
+      <p><button onclick="toggleTranslation('wh')">和訳を表示</button></p>
+      <p class="translation" id="whQuestionTranslation"></p>
+      <button onclick="showWhAnswer('short')">短い答え</button>
+      <button onclick="showWhAnswer('long')">長い答え</button>
+      <div class="answer" id="shortAnswer"></div>
+      <p><button onclick="toggleTranslation('short')">和訳を表示</button></p>
+      <p class="translation" id="shortTranslation"></p>
+      <div class="answer" id="longAnswer"></div>
+      <p><button onclick="toggleTranslation('long')">和訳を表示</button></p>
+      <p class="translation" id="longTranslation"></p>
+    </div>
   </div>
 
   <script src="grade3.js"></script>
   <script src="grade3_wh.js"></script>
   <script src="gradePre2.js"></script>
   <script src="gradePre2_wh.js"></script>
-  <script src="unified_script.js"></script>
+  <script>
+    let currentQA = null;
+    let currentWhQA = null;
+
+    function getSelectedGrade() {
+      return document.getElementById("gradeSelect").value;
+    }
+
+    function showQuestion() {
+      const grade = getSelectedGrade();
+      const questions = grade === "3" ? grade3_questions : gradePre2_questions;
+      const i = Math.floor(Math.random() * questions.length);
+      currentQA = questions[i];
+
+      document.getElementById("questionText").textContent = currentQA.question;
+      document.getElementById("questionTranslation").textContent = currentQA.translation;
+
+      document.getElementById("yesAnswer").style.display = "none";
+      document.getElementById("noAnswer").style.display = "none";
+      document.getElementById("yesTranslation").style.display = "none";
+      document.getElementById("noTranslation").style.display = "none";
+      document.getElementById("questionTranslation").style.display = "none";
+
+      document.getElementById("questionCard").style.display = "block";
+    }
+
+    function showAnswer(type) {
+      if (!currentQA) return;
+      const answer = currentQA.answers[type];
+      const translation = currentQA.translations[type];
+      const el = document.getElementById(type + "Answer");
+      const tr = document.getElementById(type + "Translation");
+      el.textContent = answer;
+      el.style.display = "block";
+      tr.textContent = translation;
+    }
+
+    function showWhQuestion() {
+      const grade = getSelectedGrade();
+      const questions = grade === "3" ? grade3_wh_questions : gradePre2_wh_questions;
+      const i = Math.floor(Math.random() * questions.length);
+      currentWhQA = questions[i];
+
+      document.getElementById("whQuestionText").textContent = currentWhQA.question;
+      document.getElementById("whQuestionTranslation").textContent = currentWhQA.translation;
+
+      document.getElementById("shortAnswer").style.display = "none";
+      document.getElementById("longAnswer").style.display = "none";
+      document.getElementById("shortTranslation").style.display = "none";
+      document.getElementById("longTranslation").style.display = "none";
+      document.getElementById("whQuestionTranslation").style.display = "none";
+
+      document.getElementById("whCard").style.display = "block";
+    }
+
+    function showWhAnswer(type) {
+      if (!currentWhQA) return;
+      const answer = currentWhQA.answers[type];
+      const translation = currentWhQA.translations[type];
+      const el = document.getElementById(type + "Answer");
+      const tr = document.getElementById(type + "Translation");
+      el.textContent = answer;
+      el.style.display = "block";
+      tr.textContent = translation;
+    }
+
+    function toggleTranslation(type) {
+      const trId = {
+        question: "questionTranslation",
+        yes: "yesTranslation",
+        no: "noTranslation",
+        wh: "whQuestionTranslation",
+        short: "shortTranslation",
+        long: "longTranslation"
+      }[type];
+      const el = document.getElementById(trId);
+      if (el.style.display === "none") {
+        el.style.display = "block";
+      } else {
+        el.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
