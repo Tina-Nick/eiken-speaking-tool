@@ -60,6 +60,14 @@
           yes: "Yes, I like animals. They are cute and fun to watch. I enjoy going to the zoo with my family.",
           no: "No, I don't like animals. Some animals scare me, and I prefer quiet places without them."
         }
+      },
+      {
+        q: "Do you often help your parents at home?",
+        ja: "あなたはよく家で両親を手伝いますか？",
+        a: {
+          yes: "Yes, I often help my parents at home. I wash the dishes and take out the trash. They are happy when I help them.",
+          no: "No, I don't often help my parents at home. I have a lot of homework, so I don’t have much time."
+        }
       }
     ];
 
@@ -70,6 +78,14 @@
         a: {
           yes: "Yes, I think so. Reading books helps us learn new words and use our imagination. Also, books don’t have commercials, so we can focus better.",
           no: "No, I don't think so. TV shows can teach us many things with pictures and sound. Also, it’s more relaxing after a long day."
+        }
+      },
+      {
+        q: "Some people say that playing outside is better than playing video games. Do you agree?",
+        ja: "外で遊ぶ方がゲームをするよりも良いと言う人がいます。あなたはそう思いますか？",
+        a: {
+          yes: "Yes, I agree. Playing outside helps us stay healthy and make friends. Also, we can enjoy nature and fresh air.",
+          no: "No, I don't agree. Video games are fun and we can play even when it rains. Also, we can play with friends online."
         }
       }
     ];
@@ -82,6 +98,14 @@
           yes: "Yes, I think so. Doing homework helps students review what they learned. It also builds good study habits.",
           no: "No, I don't think so. Too much homework can make students tired. They need time to play and rest, too."
         }
+      },
+      {
+        q: "Do you think school lunch is important for students?",
+        ja: "学校給食は生徒にとって大切だと思いますか？",
+        a: {
+          yes: "Yes, I think so. School lunch gives students the energy to study. Also, it helps them learn about healthy food.",
+          no: "No, I don't think so. Some students don’t like the food. Also, not everyone eats at the same speed, so it can be stressful."
+        }
       }
     ];
 
@@ -92,6 +116,14 @@
         a: {
           yes: "Yes, I agree. Studying with friends helps us understand difficult things by talking. Also, it makes studying more fun.",
           no: "No, I don't agree. Studying alone helps me concentrate. Also, I can study at my own pace."
+        }
+      },
+      {
+        q: "Some people say that having a part-time job is good for high school students. Do you agree?",
+        ja: "高校生にとってアルバイトをするのは良いことだと言う人がいます。あなたはそう思いますか？",
+        a: {
+          yes: "Yes, I agree. Having a job helps students learn responsibility. Also, they can earn money for their needs.",
+          no: "No, I don't agree. A part-time job takes time from studying. Also, it can be stressful for young students."
         }
       }
     ];
@@ -110,6 +142,8 @@
 
     function showQuestion() {
       const questionList = getCurrentQuestionList();
+      if (questionList.length === 0) return;
+
       const random = Math.floor(Math.random() * questionList.length);
       const item = questionList[random];
 
