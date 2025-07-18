@@ -2,171 +2,434 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>英検スピーキング練習ツール</title>
   <style>
     body {
       font-family: sans-serif;
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
+      margin: 20px;
+      padding: 10px;
+      background-color: #f4f4f4;
     }
-    select, button {
+    h1 {
+      font-size: 1.5rem;
+    }
+    label, select, button {
+      font-size: 1rem;
       margin: 5px;
-      padding: 8px;
-      font-size: 16px;
     }
-    .question {
-      font-weight: bold;
-      margin-top: 20px;
+    .question-block {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .translation, .answer {
-      margin-top: 10px;
-    }
-    .label {
+    .section-title {
       font-weight: bold;
       margin-top: 15px;
+    }
+    .translation {
+      display: none;
+      color: #555;
+      margin-top: 5px;
+    }
+    .answer-block {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <h1>英検スピーキング練習ツール</h1>
-
   <label for="grade">級を選んでください：</label>
   <select id="grade">
-    <option value="grade3">英検3級</option>
-    <option value="gradePre2">英検準2級</option>
+    <option value="grade3">3級</option>
+    <option value="gradePre2">準2級</option>
   </select>
+  <button onclick="showQuestion()">新しい質問を表示</button>
 
-  <label for="questionType">質問タイプ：</label>
-  <select id="questionType">
-    <option value="question1">質問①（Yes/No）</option>
-    <option value="question2">質問②（意見を述べる）</option>
-  </select>
+  <div id="question1" class="question-block">
+    <div class="section-title">質問①</div>
+    <div id="q1"></div>
+    <button onclick="toggleTranslation('q1-translation')">和訳を表示</button>
+    <div id="q1-translation" class="translation"></div>
+    <div class="answer-block">
+      <button onclick="toggleAnswer('a1')">模範解答を表示</button>
+      <div id="a1" class="translation"></div>
+    </div>
+  </div>
 
-  <button onclick="showQuestion()">お題を表示</button>
-  <div class="question" id="question"></div>
-  <button onclick="toggleTranslation()">和訳を表示 / 非表示</button>
-  <div class="translation" id="translation" style="display:none;"></div>
-  <button onclick="toggleAnswer()">模範解答を表示 / 非表示</button>
-  <div class="answer" id="answer" style="display:none;"></div>
+  <div id="question2" class="question-block">
+    <div class="section-title">質問②</div>
+    <div id="q2"></div>
+    <button onclick="toggleTranslation('q2-translation')">和訳を表示</button>
+    <div id="q2-translation" class="translation"></div>
+    <div class="answer-block">
+      <button onclick="toggleAnswer('a2')">模範解答を表示</button>
+      <div id="a2" class="translation"></div>
+    </div>
+  </div>
 
   <script>
-    const grade3_questions = [
-      {
-        q: "Do you like animals?",
-        ja: "あなたは動物が好きですか？",
-        a: {
-          yes: "Yes, I like animals. They are cute and fun to watch. I enjoy going to the zoo with my family.",
-          no: "No, I don't like animals. Some animals scare me, and I prefer quiet places without them."
-        }
-      },
-      {
-        q: "Do you often help your parents at home?",
-        ja: "あなたはよく家で両親を手伝いますか？",
-        a: {
-          yes: "Yes, I often help my parents at home. I wash the dishes and take out the trash. They are happy when I help them.",
-          no: "No, I don't often help my parents at home. I have a lot of homework, so I don’t have much time."
-        }
-      }
-    ];
+    const grade3_questions = [/*{
+  q: "Do you eat breakfast every day?",
+  jp: "あなたは毎日朝ごはんを食べますか？",
+  a: "Yes, I do. Eating breakfast gives me energy. Also, I like eating with my family."
+},
+{
+  q: "Do you play sports after school?",
+  jp: "あなたは放課後にスポーツをしますか？",
+  a: "Yes, I do. Playing sports is fun. It also helps me stay healthy."
+},
+{
+  q: "Do you help your parents at home?",
+  jp: "あなたは家で両親を手伝いますか？",
+  a: "Yes, I do. I help clean the rooms. Also, I sometimes cook with my mother."
+},
+{
+  q: "Do you like animals?",
+  jp: "あなたは動物が好きですか？",
+  a: "Yes, I do. I think animals are cute. I want to have a dog someday."
+},
+{
+  q: "Do you use a computer at school?",
+  jp: "あなたは学校でコンピューターを使いますか？",
+  a: "Yes, I do. We use it in computer class. It helps us learn many things."
+},
+{
+  q: "Do you talk with your friends every day?",
+  jp: "あなたは毎日友だちと話しますか？",
+  a: "Yes, I do. Talking with friends is fun. We talk during lunch time."
+},
+{
+  q: "Do you go to the library?",
+  jp: "あなたは図書館に行きますか？",
+  a: "Yes, I do. I like reading books there. It's a quiet place to study too."
+},
+{
+  q: "Do you want to travel to other countries?",
+  jp: "あなたは他の国に旅行したいですか？",
+  a: "Yes, I do. I want to see different cultures. I also want to try new food."
+},
+{
+  q: "Do you watch movies on weekends?",
+  jp: "あなたは週末に映画を見ますか？",
+  a: "Yes, I do. Watching movies is fun. I like watching them with my family."
+},
+{
+  q: "Do you have many hobbies?",
+  jp: "あなたはたくさんの趣味を持っていますか？",
+  a: "Yes, I do. I like drawing and playing games. Hobbies make me happy."
+},
+{
+  q: "Do you eat vegetables every day?",
+  jp: "あなたは毎日野菜を食べますか？",
+  a: "Yes, I do. Vegetables are good for my body. My mother cooks them well."
+},
+{
+  q: "Do you go to bed early?",
+  jp: "あなたは早く寝ますか？",
+  a: "Yes, I do. Sleeping early helps me get up on time. I can study better too."
+},
+{
+  q: "Do you like singing songs?",
+  jp: "あなたは歌を歌うのが好きですか？",
+  a: "Yes, I do. I often sing in music class. Singing makes me feel happy."
+},
+{
+  q: "Do you clean your room by yourself?",
+  jp: "あなたは自分で部屋を掃除しますか？",
+  a: "Yes, I do. I clean it every weekend. A clean room is comfortable."
+},
+{
+  q: "Do you eat lunch at school?",
+  jp: "あなたは学校で昼ごはんを食べますか？",
+  a: "Yes, I do. School lunch is tasty. I like eating with my classmates."
+},
+{
+  q: "Do you write in English at school?",
+  jp: "あなたは学校で英語を書きますか？",
+  a: "Yes, I do. We write sentences in class. It helps me learn new words."
+},
+{
+  q: "Do you like going to the zoo?",
+  jp: "あなたは動物園に行くのが好きですか？",
+  a: "Yes, I do. I like seeing many animals. I want to go there again."
+},
+{
+  q: "Do you walk to school?",
+  jp: "あなたは学校まで歩いて行きますか？",
+  a: "Yes, I do. I walk with my friends. It's a good way to exercise."
+},
+{
+  q: "Do you like summer?",
+  jp: "あなたは夏が好きですか？",
+  a: "Yes, I do. I can go swimming and eat ice cream. Summer is fun."
+},
+{
+  q: "Do you watch TV every day?",
+  jp: "あなたは毎日テレビを見ますか？",
+  a: "Yes, I do. I watch it after homework. I like funny shows."
+}
+*/];
+    const grade3_questions_wh = [/*{
+  q: "What do you like to do on weekends?",
+  jp: "週末に何をするのが好きですか？",
+  a: "I like to play soccer with my friends. It is fun and good exercise."
+},
+{
+  q: "Where do you want to go during your summer vacation?",
+  jp: "夏休みにどこに行きたいですか？",
+  a: "I want to go to the beach. I like swimming and eating ice cream."
+},
+{
+  q: "What do you usually eat for lunch?",
+  jp: "ふだん昼ごはんに何を食べますか？",
+  a: "I usually eat rice and meat. I like curry rice the best."
+},
+{
+  q: "Who is your favorite teacher?",
+  jp: "あなたの好きな先生は誰ですか？",
+  a: "My favorite teacher is my English teacher. She is kind and fun."
+},
+{
+  q: "What do you do after school?",
+  jp: "放課後に何をしますか？",
+  a: "I do my homework and watch TV. I sometimes play games too."
+},
+{
+  q: "What animal do you like?",
+  jp: "どんな動物が好きですか？",
+  a: "I like dogs. They are friendly and cute."
+},
+{
+  q: "When do you usually go to bed?",
+  jp: "いつも何時に寝ますか？",
+  a: "I usually go to bed at ten. I need to sleep to feel good the next day."
+},
+{
+  q: "How do you go to school?",
+  jp: "どうやって学校に行きますか？",
+  a: "I go to school by bike. It’s fast and fun."
+},
+{
+  q: "What subject do you like best?",
+  jp: "一番好きな教科は何ですか？",
+  a: "I like English. It is interesting and useful."
+},
+{
+  q: "What do you do in your free time?",
+  jp: "ひまなときに何をしますか？",
+  a: "I read comic books. They are very fun."
+},
+{
+  q: "What do you want to be in the future?",
+  jp: "将来、何になりたいですか？",
+  a: "I want to be a teacher. I like helping children learn."
+},
+{
+  q: "What do you eat for breakfast?",
+  jp: "朝ごはんに何を食べますか？",
+  a: "I eat toast and eggs. I drink milk too."
+},
+{
+  q: "Who do you talk to when you have a problem?",
+  jp: "困ったことがあるとき、誰に話しますか？",
+  a: "I talk to my mother. She always helps me."
+},
+{
+  q: "What sport do you like?",
+  jp: "どんなスポーツが好きですか？",
+  a: "I like baseball. It’s exciting and fun to play."
+},
+{
+  q: "What TV show do you like?",
+  jp: "どんなテレビ番組が好きですか？",
+  a: "I like comedy shows. They make me laugh."
+}
+*/];
+    const gradePre2_questions = [/*<script>
+  const gradePre2_questions = [
+    {
+      q: "Do you think it's better to eat at home than at restaurants?",
+      jp: "レストランで食べるより家で食べる方がよいと思いますか？",
+      a: "Yes, I do. Eating at home is cheaper. Also, it is healthier because I can choose good ingredients."
+    },
+    {
+      q: "Do you think it's good to have school events like sports day?",
+      jp: "運動会のような学校行事は良いと思いますか？",
+      a: "Yes, I do. Such events are fun and exciting. Also, students can make good memories with their friends."
+    },
+    {
+      q: "Do you think students should learn how to cook at school?",
+      jp: "生徒は学校で料理のしかたを学ぶべきだと思いますか？",
+      a: "Yes, I do. Cooking is a useful life skill. Also, it helps students eat healthier food in the future."
+    },
+    {
+      q: "Do you think it’s good to have part-time jobs while in high school?",
+      jp: "高校生がアルバイトをするのは良いことだと思いますか？",
+      a: "Yes, I do. Students can learn about responsibility. Also, they can save money for their future."
+    },
+    {
+      q: "Do you think using smartphones at school is a good idea?",
+      jp: "学校でスマートフォンを使うのは良いと思いますか？",
+      a: "No, I don’t. It can disturb the lessons. Also, some students may use them to play games."
+    },
+    {
+      q: "Do you think school uniforms are necessary?",
+      jp: "学校の制服は必要だと思いますか？",
+      a: "Yes, I do. Uniforms help students focus on studying. Also, they prevent bullying based on fashion."
+    },
+    {
+      q: "Do you think watching news is important for students?",
+      jp: "ニュースを見ることは生徒にとって大切だと思いますか？",
+      a: "Yes, I do. Students can learn about the world. Also, it helps them think about social problems."
+    },
+    {
+      q: "Do you think having pets is good for children?",
+      jp: "子どもにとってペットを飼うことは良いと思いますか？",
+      a: "Yes, I do. Pets teach children how to take care of others. Also, they can be good friends."
+    },
+    {
+      q: "Do you think students should clean their classrooms?",
+      jp: "生徒は自分たちで教室を掃除すべきだと思いますか？",
+      a: "Yes, I do. Cleaning teaches students responsibility. Also, they learn to take care of shared spaces."
+    },
+    {
+      q: "Do you think online classes are better than in-person classes?",
+      jp: "オンライン授業は対面授業より良いと思いますか？",
+      a: "No, I don’t. Online classes are hard to focus on. Also, students can't talk with teachers easily."
+    },
+    {
+      q: "Do you think it's good to study abroad?",
+      jp: "留学するのは良いことだと思いますか？",
+      a: "Yes, I do. Students can learn different cultures. Also, they can improve their language skills."
+    },
+    {
+      q: "Do you think students should wear masks in class?",
+      jp: "生徒は授業中にマスクをつけるべきだと思いますか？",
+      a: "Yes, I do. Masks can stop sickness from spreading. Also, they help keep everyone safe."
+    },
+    {
+      q: "Do you think having summer vacation is important?",
+      jp: "夏休みは大切だと思いますか？",
+      a: "Yes, I do. Students can relax and refresh. Also, they can enjoy time with family and friends."
+    },
+    {
+      q: "Do you think students should study with friends?",
+      jp: "生徒は友達と一緒に勉強するべきだと思いますか？",
+      a: "Yes, I do. They can help each other. Also, studying together can be more fun."
+    },
+    {
+      q: "Do you think people should walk more instead of driving?",
+      jp: "人々は車を使うよりもっと歩くべきだと思いますか？",
+      a: "Yes, I do. Walking is good for health. Also, it helps protect the environment."
+    }
+  ];
+</script>
+*/];
+    const gradePre2_questions_wh = [/*const gradePre2_whQuestions = [
+  {
+    q: "Some people say that reading books is better than watching TV. Do you read books often?",
+    jp: "読書はテレビを見るより良いと言う人もいます。あなたはよく本を読みますか？",
+    a_short: "Yes, I do. Reading books is fun and helps me learn new things.",
+    a_long: "Yes, I do. Reading books is fun and helps me learn new things. Also, it is good for my imagination."
+  },
+  {
+    q: "Some people say that helping others is important for children. Do you help your family or friends?",
+    jp: "人を助けることは子どもにとって大切だという人がいます。あなたは家族や友だちを助けますか？",
+    a_short: "Yes, I do. Helping makes me feel happy.",
+    a_long: "Yes, I do. Helping makes me feel happy. Also, I think it is good to be kind to others."
+  },
+  {
+    q: "Some people say that using the internet is not good for young people. Do you use the internet every day?",
+    jp: "インターネットの使用は若者に良くないという人もいます。あなたは毎日インターネットを使いますか？",
+    a_short: "Yes, I do. I use it to study and watch videos.",
+    a_long: "Yes, I do. I use it to study and watch videos. Also, it helps me talk with my friends online."
+  },
+  {
+    q: "Some people say that learning foreign languages is very useful. Do you want to speak English well?",
+    jp: "外国語を学ぶのはとても役に立つという人もいます。あなたは英語を上手に話したいですか？",
+    a_short: "Yes, I do. English is important for travel and work.",
+    a_long: "Yes, I do. English is important for travel and work. Also, I want to talk with people from other countries."
+  },
+  {
+    q: "Some people say that school clubs are good for students. Do you belong to a school club?",
+    jp: "部活動は生徒にとって良いと言う人もいます。あなたは部活動に入っていますか？",
+    a_short: "Yes, I do. Club activities are fun.",
+    a_long: "Yes, I do. Club activities are fun. Also, I can make many friends there."
+  },
+  {
+    q: "Some people say that recycling is important. Do you recycle things at home?",
+    jp: "リサイクルは大切だという人がいます。あなたの家ではリサイクルをしていますか？",
+    a_short: "Yes, we do. We separate garbage every day.",
+    a_long: "Yes, we do. We separate garbage every day. Also, recycling helps protect the Earth."
+  },
+  {
+    q: "Some people say that studying history is interesting. Do you like history?",
+    jp: "歴史の勉強はおもしろいという人がいます。あなたは歴史が好きですか？",
+    a_short: "Yes, I do. I enjoy learning about old times.",
+    a_long: "Yes, I do. I enjoy learning about old times. Also, it helps me understand the world better."
+  },
+  {
+    q: "Some people say that having a dream is important. Do you have a dream for the future?",
+    jp: "夢を持つことは大切だという人がいます。あなたには将来の夢がありますか？",
+    a_short: "Yes, I do. I want to be a teacher.",
+    a_long: "Yes, I do. I want to be a teacher. Also, I like helping children learn."
+  },
+  {
+    q: "Some people say that watching movies is a good way to learn English. Do you watch English movies?",
+    jp: "映画を見ることは英語を学ぶ良い方法だという人がいます。あなたは英語の映画を見ますか？",
+    a_short: "Yes, I do. I like watching movies in English.",
+    a_long: "Yes, I do. I like watching movies in English. Also, I can learn new words and pronunciation."
+  },
+  {
+    q: "Some people say that eating vegetables is good for our health. Do you eat vegetables every day?",
+    jp: "野菜を食べることは健康に良いと言う人がいます。あなたは毎日野菜を食べますか？",
+    a_short: "Yes, I do. Vegetables are good for my body.",
+    a_long: "Yes, I do. Vegetables are good for my body. Also, I like the taste of many kinds of vegetables."
+  }
+];
+*/];
 
-    const grade3_wh_questions = [
-      {
-        q: "Some people say that reading books is better than watching TV. Do you think so?",
-        ja: "読書はテレビを見るよりも良いと言う人がいます。あなたはそう思いますか？",
-        a: {
-          yes: "Yes, I think so. Reading books helps us learn new words and use our imagination. Also, books don’t have commercials, so we can focus better.",
-          no: "No, I don't think so. TV shows can teach us many things with pictures and sound. Also, it’s more relaxing after a long day."
-        }
-      },
-      {
-        q: "Some people say that playing outside is better than playing video games. Do you agree?",
-        ja: "外で遊ぶ方がゲームをするよりも良いと言う人がいます。あなたはそう思いますか？",
-        a: {
-          yes: "Yes, I agree. Playing outside helps us stay healthy and make friends. Also, we can enjoy nature and fresh air.",
-          no: "No, I don't agree. Video games are fun and we can play even when it rains. Also, we can play with friends online."
-        }
-      }
-    ];
-
-    const gradePre2_questions = [
-      {
-        q: "Do you think students should do homework every day?",
-        ja: "生徒は毎日宿題をすべきだと思いますか？",
-        a: {
-          yes: "Yes, I think so. Doing homework helps students review what they learned. It also builds good study habits.",
-          no: "No, I don't think so. Too much homework can make students tired. They need time to play and rest, too."
-        }
-      },
-      {
-        q: "Do you think school lunch is important for students?",
-        ja: "学校給食は生徒にとって大切だと思いますか？",
-        a: {
-          yes: "Yes, I think so. School lunch gives students the energy to study. Also, it helps them learn about healthy food.",
-          no: "No, I don't think so. Some students don’t like the food. Also, not everyone eats at the same speed, so it can be stressful."
-        }
-      }
-    ];
-
-    const gradePre2_wh_questions = [
-      {
-        q: "Some people say that it's better to study with friends than to study alone. Do you agree?",
-        ja: "友達と一緒に勉強する方が、一人で勉強するよりも良いと言う人がいます。あなたはそう思いますか？",
-        a: {
-          yes: "Yes, I agree. Studying with friends helps us understand difficult things by talking. Also, it makes studying more fun.",
-          no: "No, I don't agree. Studying alone helps me concentrate. Also, I can study at my own pace."
-        }
-      },
-      {
-        q: "Some people say that having a part-time job is good for high school students. Do you agree?",
-        ja: "高校生にとってアルバイトをするのは良いことだと言う人がいます。あなたはそう思いますか？",
-        a: {
-          yes: "Yes, I agree. Having a job helps students learn responsibility. Also, they can earn money for their needs.",
-          no: "No, I don't agree. A part-time job takes time from studying. Also, it can be stressful for young students."
-        }
-      }
-    ];
-
-    function getCurrentQuestionList() {
-      const grade = document.getElementById("grade").value;
-      const questionType = document.getElementById("questionType").value;
-
-      if (grade === "grade3" && questionType === "question1") return grade3_questions;
-      if (grade === "grade3" && questionType === "question2") return grade3_wh_questions;
-      if (grade === "gradePre2" && questionType === "question1") return gradePre2_questions;
-      if (grade === "gradePre2" && questionType === "question2") return gradePre2_wh_questions;
-
-      return [];
+    function getRandomItem(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
     }
 
     function showQuestion() {
-      const questionList = getCurrentQuestionList();
-      if (questionList.length === 0) return;
+      const grade = document.getElementById("grade").value;
 
-      const random = Math.floor(Math.random() * questionList.length);
-      const item = questionList[random];
+      let q1Data, q2Data;
+      if (grade === "grade3") {
+        q1Data = getRandomItem(grade3_questions);
+        q2Data = getRandomItem(grade3_questions_wh);
+      } else if (grade === "gradePre2") {
+        q1Data = getRandomItem(gradePre2_questions);
+        q2Data = getRandomItem(gradePre2_questions_wh);
+      }
 
-      document.getElementById("question").textContent = item.q;
-      document.getElementById("translation").textContent = item.ja;
+      document.getElementById("q1").textContent = q1Data.q;
+      document.getElementById("q1-translation").textContent = q1Data.jp;
+      document.getElementById("a1").textContent = q1Data.a;
+      document.getElementById("q2").textContent = q2Data.q;
+      document.getElementById("q2-translation").textContent = q2Data.jp;
+      document.getElementById("a2").textContent = q2Data.a;
 
-      const answerContent = typeof item.a === "string"
-        ? item.a
-        : `Yes: ${item.a.yes}<br><br>No: ${item.a.no}`;
-
-      document.getElementById("answer").innerHTML = answerContent;
-      document.getElementById("translation").style.display = "none";
-      document.getElementById("answer").style.display = "none";
+      hideTranslations();
     }
 
-    function toggleTranslation() {
-      const elem = document.getElementById("translation");
-      elem.style.display = elem.style.display === "none" ? "block" : "none";
+    function hideTranslations() {
+      document.querySelectorAll('.translation').forEach(el => el.style.display = 'none');
     }
 
-    function toggleAnswer() {
-      const elem = document.getElementById("answer");
-      elem.style.display = elem.style.display === "none" ? "block" : "none";
+    function toggleTranslation(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleAnswer(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === 'none' ? 'block' : 'none';
     }
   </script>
 </body>
