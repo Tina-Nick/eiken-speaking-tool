@@ -2,121 +2,137 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>英検スピーキング練習</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>英検スピーキング練習ツール</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
-    select, button { font-size: 1.2em; padding: 5px; margin: 5px; }
-    .card { background: white; padding: 15px; margin-top: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .hidden { display: none; }
-    .answer-block { margin-top: 10px; }
-    .question-label { font-weight: bold; margin-top: 15px; font-size: 1.1em; }
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    select, button {
+      margin: 5px;
+      padding: 8px;
+      font-size: 16px;
+    }
+    .question {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .translation, .answer {
+      margin-top: 10px;
+    }
+    .label {
+      font-weight: bold;
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
   <h1>英検スピーキング練習ツール</h1>
 
-  <label for="gradeSelect">級を選んでください：</label>
-  <select id="gradeSelect">
+  <label for="grade">級を選んでください：</label>
+  <select id="grade">
     <option value="grade3">英検3級</option>
     <option value="gradePre2">英検準2級</option>
   </select>
 
-  <div>
-    <button onclick="showQuestion()">質問①（Yes/No 質問）</button>
-    <button onclick="showWhQuestion()">質問②</button>
-  </div>
+  <label for="questionType">質問タイプ：</label>
+  <select id="questionType">
+    <option value="question1">質問①（Yes/No）</option>
+    <option value="question2">質問②（意見を述べる）</option>
+  </select>
 
-  <div id="questionCard" class="card hidden">
-    <div class="question-label">質問①</div>
-    <div id="questionText"></div>
-    <div class="answer-block">
-      <button id="yesBtn" onclick="showAnswer('yes')">Yesの答えを見る</button>
-      <button id="noBtn" onclick="showAnswer('no')">Noの答えを見る</button>
-      <p id="yesAnswer" class="hidden"></p>
-      <p id="noAnswer" class="hidden"></p>
-    </div>
-  </div>
+  <button onclick="showQuestion()">お題を表示</button>
+  <div class="question" id="question"></div>
+  <button onclick="toggleTranslation()">和訳を表示 / 非表示</button>
+  <div class="translation" id="translation" style="display:none;"></div>
+  <button onclick="toggleAnswer()">模範解答を表示 / 非表示</button>
+  <div class="answer" id="answer" style="display:none;"></div>
 
-  <div id="whCard" class="card hidden">
-    <div class="question-label">質問②</div>
-    <div id="whQuestionText"></div>
-    <div class="answer-block">
-      <button id="yesBtnWh" onclick="showWhAnswer('yes')">Yesの答えを見る</button>
-      <button id="noBtnWh" onclick="showWhAnswer('no')">Noの答えを見る</button>
-      <p id="yesAnswerWh" class="hidden"></p>
-      <p id="noAnswerWh" class="hidden"></p>
-    </div>
-  </div>
-
-  <script src="grade3.js"></script>
-  <script src="grade3_wh.js"></script>
-  <script src="gradePre2.js"></script>
-  <script src="gradePre2_wh.js"></script>
   <script>
-    let currentQA = null;
-    let currentWhQA = null;
-    let currentGrade = "grade3";
+    const grade3_questions = [
+      {
+        q: "Do you like animals?",
+        ja: "あなたは動物が好きですか？",
+        a: {
+          yes: "Yes, I like animals. They are cute and fun to watch. I enjoy going to the zoo with my family.",
+          no: "No, I don't like animals. Some animals scare me, and I prefer quiet places without them."
+        }
+      }
+    ];
 
-    const gradeSelect = document.getElementById("gradeSelect");
+    const grade3_wh_questions = [
+      {
+        q: "Some people say that reading books is better than watching TV. Do you think so?",
+        ja: "読書はテレビを見るよりも良いと言う人がいます。あなたはそう思いますか？",
+        a: {
+          yes: "Yes, I think so. Reading books helps us learn new words and use our imagination. Also, books don’t have commercials, so we can focus better.",
+          no: "No, I don't think so. TV shows can teach us many things with pictures and sound. Also, it’s more relaxing after a long day."
+        }
+      }
+    ];
 
-    gradeSelect.addEventListener("change", () => {
-      currentGrade = gradeSelect.value;
-      // リセット
-      document.getElementById("questionCard").classList.add("hidden");
-      document.getElementById("whCard").classList.add("hidden");
-    });
+    const gradePre2_questions = [
+      {
+        q: "Do you think students should do homework every day?",
+        ja: "生徒は毎日宿題をすべきだと思いますか？",
+        a: {
+          yes: "Yes, I think so. Doing homework helps students review what they learned. It also builds good study habits.",
+          no: "No, I don't think so. Too much homework can make students tired. They need time to play and rest, too."
+        }
+      }
+    ];
+
+    const gradePre2_wh_questions = [
+      {
+        q: "Some people say that it's better to study with friends than to study alone. Do you agree?",
+        ja: "友達と一緒に勉強する方が、一人で勉強するよりも良いと言う人がいます。あなたはそう思いますか？",
+        a: {
+          yes: "Yes, I agree. Studying with friends helps us understand difficult things by talking. Also, it makes studying more fun.",
+          no: "No, I don't agree. Studying alone helps me concentrate. Also, I can study at my own pace."
+        }
+      }
+    ];
+
+    function getCurrentQuestionList() {
+      const grade = document.getElementById("grade").value;
+      const questionType = document.getElementById("questionType").value;
+
+      if (grade === "grade3" && questionType === "question1") return grade3_questions;
+      if (grade === "grade3" && questionType === "question2") return grade3_wh_questions;
+      if (grade === "gradePre2" && questionType === "question1") return gradePre2_questions;
+      if (grade === "gradePre2" && questionType === "question2") return gradePre2_wh_questions;
+
+      return [];
+    }
 
     function showQuestion() {
-      const data = currentGrade === "grade3" ? grade3_questions : gradePre2_questions;
-      const i = Math.floor(Math.random() * data.length);
-      currentQA = data[i];
+      const questionList = getCurrentQuestionList();
+      const random = Math.floor(Math.random() * questionList.length);
+      const item = questionList[random];
 
-      document.getElementById("questionText").textContent = currentQA.question;
-      document.getElementById("yesAnswer").textContent = "";
-      document.getElementById("noAnswer").textContent = "";
-      document.getElementById("yesAnswer").classList.add("hidden");
-      document.getElementById("noAnswer").classList.add("hidden");
-      document.getElementById("questionCard").classList.remove("hidden");
+      document.getElementById("question").textContent = item.q;
+      document.getElementById("translation").textContent = item.ja;
+
+      const answerContent = typeof item.a === "string"
+        ? item.a
+        : `Yes: ${item.a.yes}<br><br>No: ${item.a.no}`;
+
+      document.getElementById("answer").innerHTML = answerContent;
+      document.getElementById("translation").style.display = "none";
+      document.getElementById("answer").style.display = "none";
     }
 
-    function showAnswer(type) {
-      if (!currentQA) return;
-      const answer = currentQA.answers[type];
-      const el = document.getElementById(type + "Answer");
-      el.textContent = answer;
-      el.classList.remove("hidden");
+    function toggleTranslation() {
+      const elem = document.getElementById("translation");
+      elem.style.display = elem.style.display === "none" ? "block" : "none";
     }
 
-    function showWhQuestion() {
-      const data = currentGrade === "grade3" ? grade3_wh_questions : gradePre2_wh_questions;
-      const i = Math.floor(Math.random() * data.length);
-      currentWhQA = data[i];
-
-      document.getElementById("whQuestionText").textContent = currentWhQA.question;
-      document.getElementById("yesAnswerWh").textContent = "";
-      document.getElementById("noAnswerWh").textContent = "";
-      document.getElementById("yesAnswerWh").classList.add("hidden");
-      document.getElementById("noAnswerWh").classList.add("hidden");
-
-      // ボタン表示の切り替え
-      if (currentGrade === "grade3") {
-        document.getElementById("yesBtnWh").style.display = "none";
-        document.getElementById("noBtnWh").style.display = "none";
-      } else {
-        document.getElementById("yesBtnWh").style.display = "inline-block";
-        document.getElementById("noBtnWh").style.display = "inline-block";
-      }
-
-      document.getElementById("whCard").classList.remove("hidden");
-    }
-
-    function showWhAnswer(type) {
-      if (!currentWhQA) return;
-      const answer = currentWhQA.answers[type];
-      const el = document.getElementById(type + "AnswerWh");
-      el.textContent = answer;
-      el.classList.remove("hidden");
+    function toggleAnswer() {
+      const elem = document.getElementById("answer");
+      elem.style.display = elem.style.display === "none" ? "block" : "none";
     }
   </script>
 </body>
